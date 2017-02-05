@@ -1,1 +1,35 @@
-Hello World
+html {
+	background-image: url("images/wallpaper.jpg");
+	background-attachment: fixed;
+}
+
+body {
+	font-family: "Helvetica";
+	font-size: 16px;
+	text-align: center;
+	margin-left: 300px;
+	margin-right: 300px;
+	border-style: dashed;
+	padding: 20px;
+	background-color: orange;
+	opacity: .85;
+}
+
+p {
+	text-align: left;
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.indent {
+	padding-left: 20px;
+}
+
+#top_link {
+	font-size: 11px;
+	float: left;
+}
