@@ -9,18 +9,13 @@ body {
 	text-align: center;
 	margin-left: 300px;
 	margin-right: 300px;
-	margin-bottom: 30px;
 	border-style: dashed;
 	padding: 20px;
-	padding-bottom: 30px;
 	background-color: #F2A43E;
-	opacity: .8;
 }
 
 p {
-	text-align: left;
-	margin-left: 100px;
-	margin-right: 100px;
+	font-size: 14px;
 }
 
 .bold {
@@ -31,12 +26,9 @@ p {
 	padding-left: 20px;
 }
 
-#top_link {
-	font-size: 11px;
-	float: left;
-}
-
 #my_pic {
 	height: 50%;
 	width: 50%;
+	border: solid;
+	border-width: 1px;
 }
