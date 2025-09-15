@@ -18,6 +18,8 @@ jobs:
           node-version-file: ".nvmrc"
       - name: Setup pnpm
         uses: pnpm/action-setup@v4.1.0
+        with:
+          version: latest
       - name: Install dependencies
         run: pnpm i
       - name: Run tests
