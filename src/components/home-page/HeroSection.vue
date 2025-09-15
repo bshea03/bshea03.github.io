@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { Button } from '@/components/ui/button'
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
-import avatar from '/images/me.png'
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import avatar from "/images/me.png";
 
 const particlesOptions = {
-  background: { color: 'transparent' },
+  background: { color: "transparent" },
   fullScreen: { enable: false },
   detectRetina: true,
   particles: {
@@ -13,9 +13,9 @@ const particlesOptions = {
       density: { enable: true, area: 800 },
     },
     color: {
-      value: ['#ffffff', '#a5b4fc', '#c084fc'],
+      value: ["#ffffff", "#a5b4fc", "#c084fc"],
     },
-    shape: { type: 'circle' },
+    shape: { type: "circle" },
     opacity: {
       value: { min: 0.3, max: 0.9 },
       random: { enable: true },
@@ -39,12 +39,12 @@ const particlesOptions = {
     move: { enable: false },
     shadow: {
       enable: true,
-      color: '#ffffff',
+      color: "#ffffff",
       blur: 6,
     },
     reduceDuplicates: true,
   },
-}
+};
 </script>
 
 <template>
@@ -59,7 +59,11 @@ const particlesOptions = {
     ></div>
 
     <!-- Particles -->
-    <vue-particles id="tsparticles" class="absolute inset-0 -z-10" :options="particlesOptions" />
+    <vue-particles
+      id="tsparticles"
+      class="absolute inset-0 -z-10"
+      :options="particlesOptions"
+    />
 
     <div class="relative flex flex-col items-center gap-8 md:flex-row">
       <!-- Profile image -->
@@ -96,14 +100,16 @@ const particlesOptions = {
         class="max-w-xl space-y-5 leading-relaxed"
       >
         <!-- Headline -->
-        <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
+        <h1
+          class="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl"
+        >
           Hi, I’m <span class="text-blue-400">Brady</span>
         </h1>
 
         <!-- Paragraph -->
         <p class="text-base text-gray-200 sm:text-lg">
-          A full stack engineer inspired by music, driven by learning, and passionate about building
-          things worth using.
+          A full stack engineer inspired by music, motivated by learning, and
+          passionate about building things people want to use.
         </p>
 
         <!-- Buttons -->
