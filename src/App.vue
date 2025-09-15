@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import DesktopNavMenu from './components/DesktopNavMenu.vue'
-import MobileNavMenu from './components/MobileNavMenu.vue'
+import DesktopNavMenu from "./components/DesktopNavMenu.vue";
+import MobileNavMenu from "./components/MobileNavMenu.vue";
 </script>
 
 <template>

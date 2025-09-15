@@ -25,7 +25,7 @@ jobs:
       - name: Run tests
         run: |
           pnpm lint
-          pnpm test
+          pnpm test:unit
       - name: Build app
         run: pnpm build
       - name: Upload static files as artifact
