@@ -1,29 +1,29 @@
 <script lang="ts" setup>
-import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, ref, watch } from "vue";
 
 const props = defineProps({
   project: { type: Object, default: null },
-})
+});
 
-const emit = defineEmits(['close'])
+const emit = defineEmits(["close"]);
 
-const open = computed(() => !!props.project)
-const projectKey = computed(() => props.project?.title ?? 'modal')
+const open = computed(() => !!props.project);
+const projectKey = computed(() => props.project?.title ?? "modal");
 
-const featuresRef = ref<HTMLElement | null>(null)
+const featuresRef = ref<HTMLElement | null>(null);
 
 watch(open, async (val) => {
   if (val) {
-    document.body.style.overflow = 'hidden'
-    await nextTick()
+    document.body.style.overflow = "hidden";
+    await nextTick();
   } else {
-    document.body.style.overflow = ''
+    document.body.style.overflow = "";
   }
-})
+});
 
 onBeforeUnmount(() => {
-  document.body.style.overflow = ''
-})
+  document.body.style.overflow = "";
+});
 </script>
 
 <template>
@@ -65,7 +65,10 @@ onBeforeUnmount(() => {
             </div>
 
             <!-- Scrollable body -->
-            <div ref="featuresRef" class="px-4 pb-4 sm:flex-1 sm:overflow-y-auto sm:px-6 sm:pb-6">
+            <div
+              ref="featuresRef"
+              class="px-4 pb-4 sm:flex-1 sm:overflow-y-auto sm:px-6 sm:pb-6"
+            >
               <!-- Intro -->
               <p
                 v-if="project?.details?.intro"
@@ -75,7 +78,9 @@ onBeforeUnmount(() => {
 
               <!-- Features -->
               <div v-if="project?.details?.features" class="mb-4 sm:mb-6">
-                <h4 class="mb-2 text-lg font-semibold text-white sm:text-xl">Key Features</h4>
+                <h4 class="mb-2 text-lg font-semibold text-white sm:text-xl">
+                  Key Features
+                </h4>
                 <ul class="list-inside list-disc space-y-2 text-gray-400">
                   <li v-for="(feature, i) in project.details.features" :key="i">
                     <span class="text-white">{{ feature.title }}:</span>
@@ -94,7 +99,9 @@ onBeforeUnmount(() => {
 
               <!-- Tech stack -->
               <div v-if="project?.tech" class="mb-4">
-                <h4 class="mb-2 text-lg font-semibold text-white sm:text-xl">Tech Stack</h4>
+                <h4 class="mb-2 text-lg font-semibold text-white sm:text-xl">
+                  Tech Stack
+                </h4>
                 <div class="flex flex-wrap gap-2">
                   <span
                     v-for="(t, i) in project.tech"
@@ -121,14 +128,13 @@ onBeforeUnmount(() => {
                 >
                   Source Code
                 </a>
-                <a
+                <RouterLink
                   v-if="project?.docs"
-                  :href="project.docs"
-                  target="_blank"
+                  :to="project.docs"
                   class="rounded-xl bg-gray-700 px-5 py-2.5 text-sm font-medium text-white shadow transition hover:bg-gray-600"
                 >
                   Documentation
-                </a>
+                </RouterLink>
               </div>
             </div>
           </div>
