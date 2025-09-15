@@ -1,0 +1,148 @@
+[
+  {
+    "company": "Dispatch Technologies",
+    "icon": "./images/jobs/dispatch.png",
+    "description": "Senior Software Engineer • Software Engineer",
+    "dates": "December 2021 - August 2025 (Full-time)",
+    "details": [
+      {
+        "text": "<strong>Organized and led frontend guild meetings</strong> to educate engineers and facilitate in-depth discussions on frontend topics within the context of our apps."
+      },
+      {
+        "text": "<strong>Directed the transition of our frontend</strong> from Travis CI to GitHub Actions and from Cypress end-to-end tests to Playwright, cutting our CI/CD build time by nearly 75% and enabling more reliable test coverage."
+      },
+      {
+        "text": "<strong>Integrated Cursor AI into the development workflow</strong>, significantly accelerating development and reducing turnaround time for story completion by ~30%."
+      },
+      {
+        "text": "<strong>Led a 5-engineer team across multiple sprints</strong>, coordinating story assignment, writing build plans, and maintaining continuous communication with Product to align deliverables with business goals.",
+        "children": [
+          {
+            "text": "<strong>Mentored and managed associate engineers</strong>, providing technical guidance and career development support."
+          }
+        ]
+      }
+    ],
+    "skills": [
+      "TypeScript",
+      "React",
+      "Redux",
+      "React Native",
+      "CSS",
+      "TailwindCSS",
+      "TanStack Query",
+      "Ruby on Rails",
+      "PostgreSQL",
+      "Golang",
+      "Node.js",
+      "AWS",
+      "Jest",
+      "React Testing Library",
+      "Cypress",
+      "Playwright",
+      "Webpack",
+      "Github Actions",
+      "CI/CD",
+      "Cursor AI"
+    ]
+  },
+  {
+    "company": "Raytheon Technologies",
+    "icon": "./images/jobs/raytheon.png",
+    "description": "Software Engineer I",
+    "dates": "July 2019 - December 2021 (Full-time)",
+    "details": [
+      {
+        "text": "<strong>Developed software components</strong> in an Agile/Scrum environment, ensuring system reliability for critical defense applications.",
+        "children": [
+          {
+            "text": "<strong>Served as subject matter expert</strong> for a major system software component, providing guidance and technical ownership within the team."
+          }
+        ]
+      },
+      {
+        "text": "<strong>Designed and built a terminal testing utility</strong> with Python, Tkinter, and Pytest, improving satellite system security and reliability."
+      },
+      {
+        "text": "<strong>Collaborated across multiple teams and technologies</strong>, adapting quickly to new environments and contributing to diverse projects, from lab testing utilities to field satellite system development."
+      },
+      {
+        "text": "<strong>Ensured reliability of military software systems</strong> supporting sensitive national security initiatives, through ongoing maintenance, testing, and validation."
+      }
+    ],
+    "skills": [
+      "C++",
+      "Java",
+      "Python",
+      "Tkinter",
+      "Rational Rhapsody",
+      "Pytest",
+      "Bash",
+      "Git",
+      "VMWare",
+      "Eclipse",
+      "Bitbucket",
+      "Scrum",
+      "JIRA",
+      "Confluence"
+    ]
+  },
+  {
+    "company": "Sikorsky Aircraft",
+    "icon": "./images/jobs/sikorsky.png",
+    "description": "Information Technology Intern",
+    "dates": "May 2018 - August 2018 (Internship)",
+    "details": [
+      {
+        "text": "<strong>Wrote T-SQL scripts</strong> to manage large datasets, improving reporting efficiency and reducing manual analysis."
+      },
+      {
+        "text": "<strong>Assisted engineers</strong> in migrating data replication processes from Informatica to SLT, ensuring smoother enterprise operations."
+      },
+      {
+        "text": "<strong>Collaborated with other interns</strong> to design and launch a Confluence splash page for the MatrixOne factory tool, improving usability for 500+ end users."
+      },
+      {
+        "text": "<strong>Adapted quickly to enterprise tools and workflows</strong>, contributing meaningfully to projects within the short internship timeframe."
+      }
+    ],
+    "skills": [
+      "T-SQL",
+      "Databases",
+      "Informatica",
+      "SLT",
+      "PowerShell",
+      "Confluence",
+      "Collaboration"
+    ]
+  },
+  {
+    "company": "Neo Era Media",
+    "icon": "./images/jobs/neo.png",
+    "description": "Section Manager, Wiki Administrator, Beta Tester",
+    "dates": "July 2012 - August 2018 (Part-time, volunteer role)",
+    "details": [
+      {
+        "text": "<strong>Designed and customized</strong> forum and Wiki themes using HTML, CSS, and JavaScript, building a strong foundation in front-end development."
+      },
+      {
+        "text": "<strong>Administered five Wiki sub-domains</strong>, building unique CSS themes and templates using MediaWiki syntax.",
+        "children": [
+          {
+            "text": "<strong>Contributed 700,000+ bytes</strong> of original content across these five Wikis."
+          }
+        ]
+      },
+      {
+        "text": "<strong>Moderated and managed</strong> a group of 300+ forums, providing leadership, enforcing community standards, and mentoring contributors."
+      },
+      {
+        "text": "<strong>Reviewed and approved</strong> 2,000+ user content submissions, ensuring content quality and consistency across platforms, while contributing 10,000+ of my own."
+      },
+      {
+        "text": "<strong>Tested and validated</strong> site features before release, reporting issues and suggesting improvements, gaining early experience in quality assurance and user-focused development."
+      }
+    ],
+    "skills": ["HTML", "CSS", "JavaScript", "PHP", "UI/UX", "MediaWiki", "Leadership"]
+  }
+]

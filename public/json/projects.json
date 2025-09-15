@@ -1,0 +1,157 @@
+[
+  {
+    "title": "bshea03.github.io",
+    "description": "My personal portfolio website; built from scratch with Vue 3 and TailwindCSS 4.",
+    "image": "/images/projects/thissite.png",
+    "details": {
+      "intro": "<strong style='color: white'>This website</strong> is my most recent project. It was built from scratch using Vue 3, Vite, and TailwindCSS, and serves as my first exposure to each of these technologies.",
+      "features": [
+        {
+          "title": "Modern Design",
+          "description": "Implements a clean, modern design with Vue 3 and TailwindCSS 4."
+        },
+        {
+          "title": "Responsive Design",
+          "description": "Built to be fully responsive, ensuring it looks and works great across devices."
+        },
+        {
+          "title": "Animations",
+          "description": "Includes smooth, subtle animations that improve the user experience."
+        },
+        {
+          "title": "AI-Assisted Development",
+          "description": "Leveraged AI tooling for design improvements, code optimization, and other tedious tasks."
+        }
+      ],
+      "conclusion": "As the sole developer, this site reflects my ability to quickly pick up new technologies, design intuitive interfaces, and build polished user experiences that showcase both technical skills and creative thinking."
+    },
+    "tech": ["Vue 3", "Typescript", "Vite", "TailwindCSS", "CSS", "Pinia"],
+    "code": "https://github.com/bshea03/bshea03.github.io"
+  },
+  {
+    "title": "Celebi",
+    "description": "A server-side application written for a 200,000+ member Discord server.",
+    "image": "/images/projects/celebi.png",
+    "tech": ["Python", "Discord.py", "Psycopg2", "PostgreSQL", "AWS EC2"],
+    "docs": "/readme/celebi",
+    "details": {
+      "intro": "<strong style='color: white'>Celebi</strong> is a multifunctional Discord bot developed using Python and the Discord.py library. Its primary purpose was to engage with users in a server-wide alternative-reality game (ARG) through minigames, though it later also evolved into an administrative tool.",
+      "features": [
+        {
+          "title": "Minigames & ARG Support",
+          "description": "Engaged over 1,000 active players within a 200,000+ member community through interactive minigames that supported a server-wide ARG."
+        },
+        {
+          "title": "Administrative Tools",
+          "description": "Included functionality for tasks such as ban appeal forms through the Google Sheets API and server moderation."
+        },
+        {
+          "title": "Scalability",
+          "description": "Built with sharding and async programming to handle high concurrency."
+        },
+        {
+          "title": "Database Management",
+          "description": "Used PostgreSQL and Psycopg2 for reliable data storage and retrieval."
+        },
+        {
+          "title": "Cloud Hosting",
+          "description": "Hosted on AWS EC2 to maximize reliability and uptime."
+        }
+      ],
+      "conclusion": "Celebi was my first experience independently building a scalable server-side application. It deepened my understanding of async programming, database management, and pre-deployment testing—while providing thousands of players with a reliable, large-scale interactive experience."
+    }
+  },
+  {
+    "title": "Gary",
+    "description": "A general-use, server-side application written for a private Discord server.",
+    "details": {
+      "intro": "<strong style='color: white'>Gary</strong> is a multifunctional Discord bot and was my first independently built project that continues to serve as a sandbox for experimenting with new technologies. It’s helped me deepen my understanding of async programming, database design, and cloud deployment—while providing a reliable, long-running tool for 100+ real users.",
+      "features": [
+        {
+          "title": "External APIs",
+          "description": "Integrates with Urban Dictionary (definitions), Imgur (random images from albums), Spotify & Last.fm (song data), and more."
+        },
+        {
+          "title": "Database Integration",
+          "description": "Uses a PostgreSQL database to store user data (Steam usernames, Nintendo friend codes, Xbox gamertags)."
+        },
+        {
+          "title": "Quotes System",
+          "description": "Stores user-submitted server quotes, retrievable randomly, by ID, or by user."
+        },
+        {
+          "title": "Scheduler",
+          "description": "Includes a built-in scheduler to send one-time or recurring messages."
+        },
+        {
+          "title": "Cloud Hosting",
+          "description": "Hosted on AWS EC2 to maximize reliability and uptime."
+        }
+      ],
+      "conclusion": "Gary was my first project built independently for end users. It has run reliably on AWS EC2 for 7 years, provided a sandbox for experimenting with new technologies, and continues to deliver useful features to its community — reflecting both my passion for learning and my ability to build working software."
+    },
+    "image": "/images/projects/gary.png",
+    "tech": ["Python", "Discord.py", "Psycopg2", "PostgreSQL", "AsyncIOScheduler", "AWS EC2"],
+    "docs": "/readme/gary",
+    "code": "https://github.com/bshea03/Gary"
+  },
+  {
+    "title": "TuftScavenger",
+    "description": "A mobile-first web app designed to acquaint students with the Tufts University campus.",
+    "image": "/images/projects/tufts.png",
+    "tech": ["Javascript", "HTML", "CSS", "Node.js", "Express", "Heroku"],
+    "docs": "/readme/tuftscavenger",
+    "code": "https://github.com/bshea03/tufts-scavenger",
+    "details": {
+      "intro": "<strong style='color: white'>TuftScavenger</strong> is a mobile-first web app created by a four-person team to help incoming Tufts students explore the campus through an interactive scavenger hunt.",
+      "features": [
+        {
+          "title": "Scavenger Hunt",
+          "description": "Prompts users to locate landmarks across campus using the Google Maps API."
+        },
+        {
+          "title": "JumboTour",
+          "description": "Allows users to explore key locations within the app and learn about the campus."
+        },
+        {
+          "title": "Quiz Module",
+          "description": "Lets users test their knowledge of campus landmarks after exploration."
+        },
+        {
+          "title": "Mobile-First Design",
+          "description": "Optimized for mobile devices to support new students navigating in real-time."
+        }
+      ],
+      "conclusion": "TuftScavenger was my first hands-on experience building a full-stack application in a team setting. It strengthened my skills in Express, API integration, and mobile-first design, while also sharpening my ability to collaborate effectively."
+    }
+  },
+  {
+    "title": "The Universal Machine",
+    "description": "A simple computer emulator that can read and execute basic assembly language commands.",
+    "image": "/images/projects/um.png",
+    "tech": ["C", "Assembly"],
+    "docs": "/readme/um",
+    "details": {
+      "intro": "<strong style='color: white'>The Universal Machine</strong> is a custom computer emulator designed to emulate basic hardware and execute an assembly-like language.",
+      "features": [
+        {
+          "title": "Registers & Memory",
+          "description": "Implements eight registers and a segmented, word-oriented memory system."
+        },
+        {
+          "title": "Program Counter",
+          "description": "Includes a 32-bit program counter for instruction sequencing."
+        },
+        {
+          "title": "I/O Support",
+          "description": "Capable of inputting and outputting unsigned, 8-bit characters."
+        },
+        {
+          "title": "Custom Assembly Language",
+          "description": "Supports its own assembly-like language, parsed by the UMASM assembler."
+        }
+      ],
+      "conclusion": "Developed collaboratively in C, The Universal Machine deepened my understanding of computer architecture, assembly language, and low-level systems programming. It also sharpened my ability to solve complex technical challenges through close collaboration."
+    }
+  }
+]

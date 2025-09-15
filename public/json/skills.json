@@ -1,0 +1,44 @@
+{
+  "frontend": [
+    { "icon": "devicon-react-original", "name": "React" },
+    { "icon": "devicon-vuejs-plain", "name": "Vue.js" },
+    { "icon": "devicon-nuxt-plain", "name": "Nuxt" },
+    { "icon": "devicon-redux-original", "name": "Redux" },
+    { "icon": "devicon-react-original", "name": "React Native" },
+    { "icon": "devicon-typescript-plain", "name": "TypeScript" },
+    { "icon": "devicon-tailwindcss-plain", "name": "TailwindCSS" },
+    { "icon": "devicon-css3-plain", "name": "CSS" },
+    { "icon": "devicon-html5-plain", "name": "HTML" },
+    { "icon": "devicon-javascript-plain", "name": "JavaScript" }
+  ],
+  "backend": [
+    { "icon": "devicon-nodejs-plain", "name": "Node.js" },
+    { "icon": "devicon-rails-plain", "name": "Ruby on Rails" },
+    { "icon": "devicon-express-original", "name": "Express" },
+    { "icon": "devicon-python-plain", "name": "Python" },
+    { "icon": "devicon-java-plain", "name": "Java" },
+    { "icon": "devicon-go-original-wordmark", "name": "Go" },
+    { "icon": "devicon-postgresql-plain", "name": "PostgreSQL" },
+    { "icon": "devicon-sqlite-plain", "name": "SQLite" }
+  ],
+  "testing": [
+    { "icon": "devicon-jest-plain", "name": "Jest" },
+    { "icon": "devicon-cypressio-plain", "name": "Cypress" },
+    { "icon": "devicon-playwright-plain", "name": "Playwright" },
+    { "icon": "devicon-pytest-plain", "name": "Pytest" }
+  ],
+  "cloud": [
+    { "icon": "devicon-githubactions-plain", "name": "GitHub Actions" },
+    { "icon": "devicon-amazonwebservices-plain-wordmark", "name": "AWS" },
+    { "icon": "devicon-docker-plain", "name": "Docker" },
+    { "icon": "devicon-travis-plain", "name": "Travis CI" }
+  ],
+  "tools": [
+    { "icon": "devicon-git-plain", "name": "Git" },
+    { "icon": "devicon-linux-plain", "name": "Linux" },
+    { "icon": "devicon-bash-plain", "name": "Bash" },
+    { "icon": "devicon-confluence-plain", "name": "Confluence" },
+    { "icon": "devicon-jira-plain", "name": "Jira" },
+    { "icon": "devicon-bitbucket-original", "name": "Bitbucket" }
+  ]
+}
