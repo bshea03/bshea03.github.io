@@ -15,7 +15,8 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "pre-deploy": "cd dist && cp index.html 404.html"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.16",
