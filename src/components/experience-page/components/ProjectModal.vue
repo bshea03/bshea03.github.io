@@ -44,6 +44,7 @@ onBeforeUnmount(() => {
             <!-- Close button -->
             <button
               @click="emit('close')"
+              name="Close button"
               class="absolute top-4 right-4 text-gray-400 hover:text-white"
             >
               ✕
@@ -57,7 +58,7 @@ onBeforeUnmount(() => {
                 >
                   <img
                     :src="project?.image"
-                    :alt="project?.title"
+                    :alt="project?.alt"
                     class="h-full w-full object-cover"
                   />
                 </div>
@@ -122,6 +123,7 @@ onBeforeUnmount(() => {
               <div class="flex flex-wrap gap-3">
                 <a
                   v-if="project?.code && project.code !== '_blank'"
+                  :name="project.title + ' source code'"
                   :href="project.code"
                   target="_blank"
                   class="rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-medium text-white shadow transition hover:bg-blue-500"
@@ -130,6 +132,7 @@ onBeforeUnmount(() => {
                 </a>
                 <RouterLink
                   v-if="project?.docs"
+                  :name="project.title + ' documentation'"
                   :to="project.docs"
                   class="rounded-xl bg-gray-700 px-5 py-2.5 text-sm font-medium text-white shadow transition hover:bg-gray-600"
                 >

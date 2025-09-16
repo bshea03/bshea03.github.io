@@ -1,30 +1,33 @@
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import AOS from 'aos'
-import Particles from '@tsparticles/vue3'
-import { loadSlim } from '@tsparticles/slim'
-import './assets/index.css'
-import 'aos/dist/aos.css'
-import { useExperience } from '@/stores/experience'
+import { createApp } from "vue";
+import { createPinia } from "pinia";
+import AOS from "aos";
+import Particles from "@tsparticles/vue3";
+import { loadSlim } from "@tsparticles/slim";
+import "./assets/index.css";
+import "aos/dist/aos.css";
+import { useExperience } from "@/stores/experience";
+import { createHead } from "@unhead/vue/client";
 
-import App from './App.vue'
-import router from './router'
+import App from "./App.vue";
+import router from "./router";
 
-AOS.init()
+AOS.init();
 
-const app = createApp(App)
+const app = createApp(App);
 
-app.use(createPinia())
-app.use(router)
+app.use(createPinia());
+app.use(router);
 app.use(Particles, {
   init: async (engine) => {
-    await loadSlim(engine)
+    await loadSlim(engine);
   },
-})
+});
+const head = createHead();
+app.use(head);
 
-const experience = useExperience()
+const experience = useExperience();
 experience.loadAll().then(() => {
-  app.mount('#app')
-})
+  app.mount("#app");
+});
 
-document.documentElement.classList.add('dark')
+document.documentElement.classList.add("dark");

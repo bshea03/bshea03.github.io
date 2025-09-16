@@ -1,29 +1,29 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
-import BaseCard from '@/components/BaseCard.vue'
-import type { Project } from '@/types'
+import { ref, onMounted, onBeforeUnmount } from "vue";
+import BaseCard from "@/components/BaseCard.vue";
+import type { Project } from "@/types";
 
 const props = defineProps<{
-  project: Project
-}>()
+  project: Project;
+}>();
 
-defineEmits(['selectProject'])
+defineEmits(["selectProject"]);
 
-const MAX_VISIBLE = 3
-const isSmallScreen = ref(false)
+const MAX_VISIBLE = 3;
+const isSmallScreen = ref(false);
 
 const updateScreenSize = () => {
-  isSmallScreen.value = window.innerWidth < 640
-}
+  isSmallScreen.value = window.innerWidth < 640;
+};
 
 onMounted(() => {
-  updateScreenSize()
-  window.addEventListener('resize', updateScreenSize)
-})
+  updateScreenSize();
+  window.addEventListener("resize", updateScreenSize);
+});
 
 onBeforeUnmount(() => {
-  window.removeEventListener('resize', updateScreenSize)
-})
+  window.removeEventListener("resize", updateScreenSize);
+});
 </script>
 
 <template>
@@ -38,14 +38,16 @@ onBeforeUnmount(() => {
     <!-- Thumbnail -->
     <img
       :src="props.project.image"
-      :alt="props.project.title"
+      :alt="props.project.alt"
       class="h-48 w-full rounded-t-2xl object-cover"
     />
 
     <!-- Content -->
     <div class="flex flex-1 flex-col p-4">
       <h3 class="mb-2 text-xl font-semibold">{{ props.project.title }}</h3>
-      <p class="flex-1 text-sm text-gray-400">{{ props.project.description }}</p>
+      <p class="flex-1 text-sm text-gray-400">
+        {{ props.project.description }}
+      </p>
 
       <!-- Tech badges -->
       <div class="mt-4 flex flex-wrap gap-2">

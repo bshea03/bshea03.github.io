@@ -10,22 +10,22 @@ import {
   Award,
   PencilLine,
   FileBadge,
-} from 'lucide-vue-next'
-import avatar from '/images/me.png'
-import NavDropdown from './NavDropdown.vue'
+} from "lucide-vue-next";
+import avatar from "/images/me.jpg";
+import NavDropdown from "./NavDropdown.vue";
 
 const homeSections = [
-  { label: 'About', id: 'about', icon: User },
-  { label: 'Skills', id: 'skills', icon: Star },
-  { label: 'Contact', id: 'contact', icon: Contact },
-]
+  { label: "About", id: "about", icon: User },
+  { label: "Skills", id: "skills", icon: Star },
+  { label: "Contact", id: "contact", icon: Contact },
+];
 
 const experienceSections = [
-  { label: 'Work', id: 'work', icon: Briefcase },
-  { label: 'Awards', id: 'awards', icon: Award },
-  { label: 'Portfolio', id: 'portfolio', icon: PencilLine },
-  { label: 'Resume', id: 'resume', icon: FileBadge },
-]
+  { label: "Work", id: "work", icon: Briefcase },
+  { label: "Awards", id: "awards", icon: Award },
+  { label: "Portfolio", id: "portfolio", icon: PencilLine },
+  { label: "Resume", id: "resume", icon: FileBadge },
+];
 </script>
 
 <template>
@@ -54,13 +54,19 @@ const experienceSections = [
           :items="experienceSections"
         />
 
-        <NavDropdown label="Projects" :icon="PencilRuler" to="/projects" disabled />
+        <NavDropdown
+          label="Projects"
+          :icon="PencilRuler"
+          to="/projects"
+          disabled
+        />
       </div>
 
       <!-- Right actions -->
       <div class="flex items-center gap-4">
         <a
           href="https://github.com/bshea03"
+          name="Github"
           target="_blank"
           class="text-gray-400 transition hover:text-white"
         >
@@ -68,6 +74,7 @@ const experienceSections = [
         </a>
         <a
           href="https://www.linkedin.com/in/brady-shea-699911152/"
+          name="LinkedIn"
           target="_blank"
           class="text-gray-400 transition hover:text-white"
         >

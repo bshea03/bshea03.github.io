@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import BaseCard from '@/components/BaseCard.vue'
+import BaseCard from "@/components/BaseCard.vue";
 
 defineProps({
   title: { type: String, required: true },
   skills: { type: Array<{ icon: string; name: string }>, required: true },
-})
+});
 </script>
 
 <template>
@@ -40,12 +40,15 @@ defineProps({
       >
         <div class="flex h-32 w-32 flex-col items-center justify-center">
           <i
+            :alt="skill.name + 'icon'"
             :class="[
               skill.icon,
               'colored text-5xl text-green-400 transition-transform duration-300 ease-in-out group-hover:scale-110',
             ]"
           ></i>
-          <span class="mt-3 block text-center font-medium text-white">{{ skill.name }}</span>
+          <span class="mt-3 block text-center font-medium text-white">{{
+            skill.name
+          }}</span>
         </div>
       </BaseCard>
     </div>

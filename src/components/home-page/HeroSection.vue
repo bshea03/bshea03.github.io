@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import avatar from "/images/me.png";
+import avatar from "/images/me.jpg";
 
 const particlesOptions = {
   background: { color: "transparent" },
@@ -55,6 +55,7 @@ const particlesOptions = {
   >
     <!-- Gradient glow background -->
     <div
+      alt="Abstract space baground with stars and Brady Shea’s name overlay"
       class="absolute -inset-8 rounded-full bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-3xl"
     ></div>
 
@@ -78,7 +79,10 @@ const particlesOptions = {
           <Avatar
             class="relative h-32 w-32 rounded-full object-cover shadow-lg shadow-blue-900/40 sm:h-40 sm:w-40 md:h-52 md:w-52"
           >
-            <AvatarImage :src="avatar" />
+            <AvatarImage
+              :src="avatar"
+              alt="Brady Shea smiling in front of a city skyline"
+            />
             <AvatarFallback>BS</AvatarFallback>
           </Avatar>
         </div>
@@ -116,6 +120,7 @@ const particlesOptions = {
         <div class="mt-6 flex flex-wrap justify-center gap-4 md:justify-start">
           <RouterLink to="/experience#portfolio">
             <Button
+              name="Go to portfolio"
               class="rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-3 font-medium text-white shadow-md transition hover:scale-[105%] hover:shadow-[0_0_10px_rgba(139,92,246,0.6)]"
             >
               View Projects
@@ -124,6 +129,7 @@ const particlesOptions = {
 
           <RouterLink to="/experience#resume">
             <Button
+              name="Go to resume"
               variant="secondary"
               class="rounded-full border border-purple-500/40 bg-indigo-950 px-6 py-3 shadow-md transition hover:scale-[105%] hover:bg-indigo-950 hover:shadow-[0_0_10px_rgba(139,92,246,0.2)]"
             >

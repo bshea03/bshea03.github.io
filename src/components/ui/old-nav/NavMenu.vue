@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
+import { useRoute } from "vue-router";
 
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
-import CustomNavTrigger from './CustomNavTrigger.vue'
-import DropdownContent from './DropdownContent.vue'
-import GlowingIconButton from '../../GlowingIconButton.vue'
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import CustomNavTrigger from "./CustomNavTrigger.vue";
+import DropdownContent from "./DropdownContent.vue";
+import GlowingIconButton from "../../GlowingIconButton.vue";
 
-import avatar from '/images/me.png'
+import avatar from "/images/me.jpg";
 import {
   Award,
   Briefcase,
@@ -18,145 +18,152 @@ import {
   PencilRuler,
   Star,
   User,
-} from 'lucide-vue-next'
-import { useDelayedDropdown } from '@/composables/useDelayedDropdown'
-import { nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
+} from "lucide-vue-next";
+import { useDelayedDropdown } from "@/composables/useDelayedDropdown";
+import { nextTick, onMounted, onUnmounted, ref, watch } from "vue";
 
-const route = useRoute()
+const route = useRoute();
 
-const { open, openMenu, closeMenu } = useDelayedDropdown<'home' | 'experience' | 'projects'>()
+const { open, openMenu, closeMenu } = useDelayedDropdown<
+  "home" | "experience" | "projects"
+>();
 
 // Sections for Home page
 const homeSections = [
-  { label: 'About', id: 'about', icon: User, description: 'About me' },
-  { label: 'Skills', id: 'skills', icon: Star, description: 'A list of my professional skills' },
+  { label: "About", id: "about", icon: User, description: "About me" },
   {
-    label: 'Contact',
-    id: 'contact',
-    icon: Contact,
-    description: 'Links to my GitHub, LinkedIn, and email',
+    label: "Skills",
+    id: "skills",
+    icon: Star,
+    description: "A list of my professional skills",
   },
-]
+  {
+    label: "Contact",
+    id: "contact",
+    icon: Contact,
+    description: "Links to my GitHub, LinkedIn, and email",
+  },
+];
 
 const experienceSections = [
   {
-    label: 'Work',
-    id: 'work',
+    label: "Work",
+    id: "work",
     icon: Briefcase,
-    description: 'A complete list of of my relevant job history',
+    description: "A complete list of of my relevant job history",
   },
   {
-    label: 'Awards',
-    id: 'awards',
+    label: "Awards",
+    id: "awards",
     icon: Award,
-    description: 'A list of rewards I have received at work',
+    description: "A list of rewards I have received at work",
   },
   {
-    label: 'Portfolio',
-    id: 'portfolio',
+    label: "Portfolio",
+    id: "portfolio",
     icon: PencilLine,
-    description: 'A list of large projects I have worked on',
+    description: "A list of large projects I have worked on",
   },
   {
-    label: 'Resume',
-    id: 'resume',
+    label: "Resume",
+    id: "resume",
     icon: FileBadge,
-    description: 'A downloadable copy of my professional resume',
+    description: "A downloadable copy of my professional resume",
   },
-]
+];
 
-const activeSection = ref<string | null>(null)
-const observers: IntersectionObserver[] = []
+const activeSection = ref<string | null>(null);
+const observers: IntersectionObserver[] = [];
 
 function setupObservers(sections: { id: string }[]) {
   // Cleanup old observers
-  observers.forEach((obs) => obs.disconnect())
-  observers.length = 0
+  observers.forEach((obs) => obs.disconnect());
+  observers.length = 0;
 
-  if (!sections.length) return
+  if (!sections.length) return;
 
   // ✅ Handle hero separately
-  const heroEl = document.getElementById('hero')
+  const heroEl = document.getElementById("hero");
   if (heroEl) {
     const heroObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            activeSection.value = null // Clear active section if hero is visible
+            activeSection.value = null; // Clear active section if hero is visible
           }
-        })
+        });
       },
-      { root: null, threshold: 0.1 },
-    ) // adjust threshold if needed
-    heroObserver.observe(heroEl)
-    observers.push(heroObserver)
+      { root: null, threshold: 0.1 }
+    ); // adjust threshold if needed
+    heroObserver.observe(heroEl);
+    observers.push(heroObserver);
   }
 
   // Main observer (for all sections)
   const options: IntersectionObserverInit = {
     root: null,
-    rootMargin: '-100px 0px -60% 0px',
+    rootMargin: "-100px 0px -60% 0px",
     threshold: 0,
-  }
+  };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      const id = entry.target.id
+      const id = entry.target.id;
 
       if (entry.isIntersecting) {
-        activeSection.value = id
+        activeSection.value = id;
       }
-    })
-  }, options)
+    });
+  }, options);
 
   sections.forEach(({ id }) => {
-    const el = document.getElementById(id)
-    if (el) observer.observe(el)
-  })
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
 
-  observers.push(observer)
+  observers.push(observer);
 
   // ✅ Bottom-of-page fallback
   const bottomObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          activeSection.value = sections[sections.length - 1].id
+          activeSection.value = sections[sections.length - 1].id;
         }
-      })
+      });
     },
-    { root: null, threshold: 1.0 },
-  )
+    { root: null, threshold: 1.0 }
+  );
 
-  const lastEl = document.getElementById(sections[sections.length - 1].id)
-  if (lastEl) bottomObserver.observe(lastEl)
-  observers.push(bottomObserver)
+  const lastEl = document.getElementById(sections[sections.length - 1].id);
+  if (lastEl) bottomObserver.observe(lastEl);
+  observers.push(bottomObserver);
 }
 
 onMounted(() => {
   const init = async () => {
-    await nextTick()
-    if (route.path === '/') setupObservers(homeSections)
-    if (route.path === '/experience') setupObservers(experienceSections)
-  }
+    await nextTick();
+    if (route.path === "/") setupObservers(homeSections);
+    if (route.path === "/experience") setupObservers(experienceSections);
+  };
 
-  init()
+  init();
 
   watch(
     () => route.path,
     async () => {
-      await nextTick()
-      if (route.path === '/') setupObservers(homeSections)
-      if (route.path === '/experience') setupObservers(experienceSections)
+      await nextTick();
+      if (route.path === "/") setupObservers(homeSections);
+      if (route.path === "/experience") setupObservers(experienceSections);
     },
-    { immediate: true },
-  )
-})
+    { immediate: true }
+  );
+});
 
 onUnmounted(() => {
-  observers.forEach((obs) => obs.disconnect())
-  observers.length = 0
-})
+  observers.forEach((obs) => obs.disconnect());
+  observers.length = 0;
+});
 </script>
 
 <template>
@@ -194,15 +201,19 @@ onUnmounted(() => {
             :class="isActive ? 'trigger-active' : 'nav-trigger'"
             @click="
               () => {
-                closeMenu()
-                navigate()
+                closeMenu();
+                navigate();
               }
             "
           />
         </router-link>
 
         <!-- Experience Trigger -->
-        <router-link :to="{ path: '/experience' }" custom v-slot="{ navigate, isActive }">
+        <router-link
+          :to="{ path: '/experience' }"
+          custom
+          v-slot="{ navigate, isActive }"
+        >
           <CustomNavTrigger
             label="Experience"
             :icon="LibraryBig"
@@ -212,15 +223,19 @@ onUnmounted(() => {
             :class="isActive ? 'trigger-active' : 'nav-trigger'"
             @click="
               () => {
-                closeMenu()
-                navigate()
+                closeMenu();
+                navigate();
               }
             "
           />
         </router-link>
 
         <!-- Projects Trigger -->
-        <router-link :to="{ path: '/projects' }" custom v-slot="{ navigate, isActive }">
+        <router-link
+          :to="{ path: '/projects' }"
+          custom
+          v-slot="{ navigate, isActive }"
+        >
           <CustomNavTrigger
             label="Projects"
             :icon="PencilRuler"
@@ -255,10 +270,16 @@ onUnmounted(() => {
             >
               <div class="flex items-center justify-start gap-4 text-white">
                 <div class="flex w-[50px] justify-center">
-                  <component :is="section.icon" class="text-white" v-bind="{ size: 36 }" />
+                  <component
+                    :is="section.icon"
+                    class="text-white"
+                    v-bind="{ size: 36 }"
+                  />
                 </div>
                 <div class="flex flex-col gap-1">
-                  <div class="font-semibold text-white">{{ section.label }}</div>
+                  <div class="font-semibold text-white">
+                    {{ section.label }}
+                  </div>
                 </div>
               </div>
             </router-link>
@@ -281,13 +302,23 @@ onUnmounted(() => {
               :class="activeSection === section.id ? 'nav-active' : 'nav-link'"
               @click="closeMenu()"
             >
-              <div class="flex w-full items-center justify-around p-1 text-white">
+              <div
+                class="flex w-full items-center justify-around p-1 text-white"
+              >
                 <div class="flex w-1/5 items-center justify-center">
-                  <component :is="section.icon" class="text-white" v-bind="{ size: 36 }" />
+                  <component
+                    :is="section.icon"
+                    class="text-white"
+                    v-bind="{ size: 36 }"
+                  />
                 </div>
                 <div class="flex w-4/5 flex-col gap-1">
-                  <div class="font-semibold text-white">{{ section.label }}</div>
-                  <div class="text-sm text-gray-300">{{ section.description }}</div>
+                  <div class="font-semibold text-white">
+                    {{ section.label }}
+                  </div>
+                  <div class="text-sm text-gray-300">
+                    {{ section.description }}
+                  </div>
                 </div>
               </div>
             </router-link>
@@ -308,7 +339,11 @@ onUnmounted(() => {
 
       <!-- Right-side Actions -->
       <div class="nav-section gap-2">
-        <GlowingIconButton icon="devicon-github-plain" href="https://github.com/bshea03" external />
+        <GlowingIconButton
+          icon="devicon-github-plain"
+          href="https://github.com/bshea03"
+          external
+        />
         <GlowingIconButton
           icon="devicon-linkedin-plain"
           href="https://www.linkedin.com/in/brady-shea-699911152/"
@@ -332,7 +367,7 @@ onUnmounted(() => {
 
   /* gradient border via pseudo-element */
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     padding: 2px; /* border thickness */

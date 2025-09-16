@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { RouterLink } from 'vue-router'
-import avatar from '/images/me.png'
+import { ref } from "vue";
+import { RouterLink } from "vue-router";
+import avatar from "/images/me.jpg";
 import {
   House,
   LibraryBig,
@@ -12,31 +12,31 @@ import {
   Award,
   Briefcase,
   FileBadge,
-} from 'lucide-vue-next'
+} from "lucide-vue-next";
 
-const isOpen = ref(false)
+const isOpen = ref(false);
 
 const links = [
-  { label: 'Home', to: '/', icon: House },
-  { label: 'Experience', to: '/experience', icon: LibraryBig },
-  { label: 'Projects', to: '/projects', icon: PencilRuler, disabled: true },
-]
+  { label: "Home", to: "/", icon: House },
+  { label: "Experience", to: "/experience", icon: LibraryBig },
+  { label: "Projects", to: "/projects", icon: PencilRuler, disabled: true },
+];
 
 const homeSections = [
-  { label: 'About', id: 'about', icon: User },
-  { label: 'Skills', id: 'skills', icon: Star },
-  { label: 'Contact', id: 'contact', icon: Contact },
-]
+  { label: "About", id: "about", icon: User },
+  { label: "Skills", id: "skills", icon: Star },
+  { label: "Contact", id: "contact", icon: Contact },
+];
 
 const experienceSections = [
-  { label: 'Work', id: 'work', icon: Briefcase },
-  { label: 'Awards', id: 'awards', icon: Award },
-  { label: 'Portfolio', id: 'portfolio', icon: PencilRuler },
-  { label: 'Resume', id: 'resume', icon: FileBadge },
-]
+  { label: "Work", id: "work", icon: Briefcase },
+  { label: "Awards", id: "awards", icon: Award },
+  { label: "Portfolio", id: "portfolio", icon: PencilRuler },
+  { label: "Resume", id: "resume", icon: FileBadge },
+];
 
 function toggleDrawer() {
-  isOpen.value = !isOpen.value
+  isOpen.value = !isOpen.value;
 }
 </script>
 
@@ -54,9 +54,13 @@ function toggleDrawer() {
         />
         <span class="font-medium text-white/80">Brady Shea</span>
       </div>
-      <button class="rounded-md p-2 text-white transition hover:bg-white/20" @click="toggleDrawer">
+      <button
+        class="rounded-md p-2 text-white transition hover:bg-white/20"
+        @click="toggleDrawer"
+      >
         <svg
           v-if="!isOpen"
+          name="Toggle menu drawer"
           xmlns="http://www.w3.org/2000/svg"
           class="h-7 w-7"
           fill="none"
@@ -140,7 +144,11 @@ function toggleDrawer() {
 
     <!-- Backdrop -->
     <transition name="fade">
-      <div v-if="isOpen" class="fixed inset-0 z-30 bg-black/50" @click="toggleDrawer" />
+      <div
+        v-if="isOpen"
+        class="fixed inset-0 z-30 bg-black/50"
+        @click="toggleDrawer"
+      />
     </transition>
   </div>
 </template>

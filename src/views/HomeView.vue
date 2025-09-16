@@ -1,18 +1,31 @@
 <script setup lang="ts">
-import { ChevronDown } from 'lucide-vue-next'
-import HeroSection from '@/components/home-page/HeroSection.vue'
-import AboutSection from '@/components/home-page/AboutSection.vue'
-import SkillsSection from '@/components/home-page/SkillsSection.vue'
-import ContactSection from '@/components/home-page/ContactSection.vue'
+import { ChevronDown } from "lucide-vue-next";
+import { useSeoMeta } from "@unhead/vue";
+import HeroSection from "@/components/home-page/HeroSection.vue";
+import AboutSection from "@/components/home-page/AboutSection.vue";
+import SkillsSection from "@/components/home-page/SkillsSection.vue";
+import ContactSection from "@/components/home-page/ContactSection.vue";
+
+useSeoMeta({
+  title: "Brady Shea – Senior Software Engineer",
+  description:
+    "Brady Shea – Senior Software Engineer blending full-stack development, cloud infrastructure, and authentic technical leadership.",
+});
 
 const scrollTo = (id: string) => {
-  const el = document.getElementById(id)
-  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-}
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+};
 </script>
 
 <template>
-  <div class="relative overflow-hidden bg-gradient-to-br from-blue-950 via-black to-blue-950">
+  <meta
+    name="description"
+    content="Brady Shea – Senior Software Engineer blending full-stack development, cloud infrastructure, and authentic technical leadership."
+  />
+  <div
+    class="relative overflow-hidden bg-gradient-to-br from-blue-950 via-black to-blue-950"
+  >
     <!-- Soft animated glow -->
     <div
       class="pointer-events-none absolute inset-0 animate-pulse bg-[radial-gradient(circle_at_top_left,_var(--tw-gradient-stops))] from-blue-500/20 via-transparent to-transparent"
@@ -21,9 +34,12 @@ const scrollTo = (id: string) => {
     <HeroSection />
 
     <!-- Scroll indicator -->
-    <div class="pointer-events-auto absolute bottom-10 left-1/2 z-20 -translate-x-1/2">
+    <div
+      class="pointer-events-auto absolute bottom-10 left-1/2 z-20 -translate-x-1/2"
+    >
       <button
         @click="scrollTo('about')"
+        name="Go to about section"
         class="group flex flex-col items-center text-blue-400 outline-none hover:text-blue-300"
         aria-label="Scroll to next section"
       >
@@ -36,7 +52,8 @@ const scrollTo = (id: string) => {
             <ChevronDown class="h-8 w-8" />
           </div>
         </div>
-        <span class="mt-1 text-xs opacity-80 transition duration-300 group-hover:opacity-100"
+        <span
+          class="mt-1 text-xs opacity-80 transition duration-300 group-hover:opacity-100"
           >Scroll</span
         >
       </button>

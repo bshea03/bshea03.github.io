@@ -3,6 +3,7 @@ import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import tailwindcss from "@tailwindcss/vite";
 import vueDevTools from "vite-plugin-vue-devtools";
+import viteCompression from "vite-plugin-compression";
 
 import { fileURLToPath } from "url";
 import { resolve } from "path";
@@ -23,7 +24,7 @@ export default defineConfig({
     },
     minify: "terser",
   },
-  plugins: [vue(), vueJsx(), vueDevTools(), tailwindcss()],
+  plugins: [vue(), vueJsx(), vueDevTools(), tailwindcss(), viteCompression()],
   resolve: {
     alias: [
       {

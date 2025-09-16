@@ -143,6 +143,14 @@
         "text": "<strong>Tested and validated</strong> site features before release, reporting issues and suggesting improvements, gaining early experience in quality assurance and user-focused development."
       }
     ],
-    "skills": ["HTML", "CSS", "JavaScript", "PHP", "UI/UX", "MediaWiki", "Leadership"]
+    "skills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "PHP",
+      "UI/UX",
+      "MediaWiki",
+      "Leadership"
+    ]
   }
 ]

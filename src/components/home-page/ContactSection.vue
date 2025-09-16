@@ -1,11 +1,14 @@
 <script lang="ts" setup>
-import { Contact, Mail } from 'lucide-vue-next'
-import SectionHeader from '../SectionHeader.vue'
-import SectionDivider from '../SectionDivider.vue'
+import { Contact, Mail } from "lucide-vue-next";
+import SectionHeader from "../SectionHeader.vue";
+import SectionDivider from "../SectionDivider.vue";
 </script>
 
 <template>
-  <section id="contact" class="relative bg-gradient-to-b from-gray-900 to-slate-950 pb-20">
+  <section
+    id="contact"
+    class="relative bg-gradient-to-b from-gray-900 to-slate-950 pb-20"
+  >
     <SectionDivider class="absolute -top-1 mb-16" />
 
     <!-- BG constellation -->
@@ -30,7 +33,8 @@ import SectionDivider from '../SectionDivider.vue'
         </div>
       </SectionHeader>
       <p class="text-white-200 mb-8">
-        Let’s connect! I’m always happy to discuss opportunities, projects, or ideas.
+        Let’s connect! I’m always happy to discuss opportunities, projects, or
+        ideas.
       </p>
 
       <!-- Contact options -->
@@ -41,6 +45,7 @@ import SectionDivider from '../SectionDivider.vue'
         >
           <a
             href="https://github.com/bshea03"
+            name="GitHub footer link"
             target="_blank"
             rel="noopener"
             class="flex h-14 w-14 items-center justify-center rounded-full bg-gray-800 text-gray-400 duration-500 hover:text-white hover:shadow-md hover:shadow-blue-500/40"
@@ -55,6 +60,7 @@ import SectionDivider from '../SectionDivider.vue'
         >
           <a
             href="https://www.linkedin.com/in/brady-shea-699911152/"
+            name="LinkedIn footer link"
             target="_blank"
             rel="noopener"
             class="flex h-14 w-14 items-center justify-center rounded-full bg-gray-800 text-gray-400 duration-500 hover:text-white hover:shadow-md hover:shadow-blue-500/40"
@@ -69,6 +75,7 @@ import SectionDivider from '../SectionDivider.vue'
         >
           <a
             href="mailto:brady.shea97@gmail.com"
+            name="Email footer link"
             target="_blank"
             class="flex h-14 w-14 items-center justify-center rounded-full bg-gray-800 text-gray-400 duration-500 hover:text-white hover:shadow-md hover:shadow-blue-500/40"
           >

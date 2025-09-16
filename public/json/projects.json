@@ -3,6 +3,7 @@
     "title": "bshea03.github.io",
     "description": "My personal portfolio website; built from scratch with Vue 3 and TailwindCSS 4.",
     "image": "/images/projects/thissite.png",
+    "alt": "Screenshot of the homepage of this website",
     "details": {
       "intro": "<strong style='color: white'>This website</strong> is my most recent project. It was built from scratch using Vue 3, Vite, and TailwindCSS, and serves as my first exposure to each of these technologies.",
       "features": [
@@ -32,6 +33,7 @@
     "title": "Celebi",
     "description": "A server-side application written for a 200,000+ member Discord server.",
     "image": "/images/projects/celebi.png",
+    "alt": "Image of the Pokemon Celebi that this project is named after.",
     "tech": ["Python", "Discord.py", "Psycopg2", "PostgreSQL", "AWS EC2"],
     "docs": "/readme/celebi",
     "details": {
@@ -64,6 +66,7 @@
   {
     "title": "Gary",
     "description": "A general-use, server-side application written for a private Discord server.",
+    "alt": "Image of the 'Gary' character that this project is named after.",
     "details": {
       "intro": "<strong style='color: white'>Gary</strong> is a multifunctional Discord bot and was my first independently built project that continues to serve as a sandbox for experimenting with new technologies. It’s helped me deepen my understanding of async programming, database design, and cloud deployment—while providing a reliable, long-running tool for 100+ real users.",
       "features": [
@@ -91,7 +94,14 @@
       "conclusion": "Gary was my first project built independently for end users. It has run reliably on AWS EC2 for 7 years, provided a sandbox for experimenting with new technologies, and continues to deliver useful features to its community — reflecting both my passion for learning and my ability to build working software."
     },
     "image": "/images/projects/gary.png",
-    "tech": ["Python", "Discord.py", "Psycopg2", "PostgreSQL", "AsyncIOScheduler", "AWS EC2"],
+    "tech": [
+      "Python",
+      "Discord.py",
+      "Psycopg2",
+      "PostgreSQL",
+      "AsyncIOScheduler",
+      "AWS EC2"
+    ],
     "docs": "/readme/gary",
     "code": "https://github.com/bshea03/Gary"
   },
@@ -99,6 +109,7 @@
     "title": "TuftScavenger",
     "description": "A mobile-first web app designed to acquaint students with the Tufts University campus.",
     "image": "/images/projects/tufts.png",
+    "alt": "Image of the Tufts University campus.",
     "tech": ["Javascript", "HTML", "CSS", "Node.js", "Express", "Heroku"],
     "docs": "/readme/tuftscavenger",
     "code": "https://github.com/bshea03/tufts-scavenger",
@@ -129,6 +140,7 @@
     "title": "The Universal Machine",
     "description": "A simple computer emulator that can read and execute basic assembly language commands.",
     "image": "/images/projects/um.png",
+    "alt": "Clipart image of a computer.",
     "tech": ["C", "Assembly"],
     "docs": "/readme/um",
     "details": {
