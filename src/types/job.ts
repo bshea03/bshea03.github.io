@@ -1,11 +1,12 @@
-import { type ListItem } from './list'
+import { type ListItem } from "./list";
 
 export type Job = {
-  company: string
-  icon?: string
-  description: string
-  dates: string
-  details: ListItem[]
-  location?: string
-  skills?: Array<string>
-}
+  id: number;
+  company: string;
+  icon?: string;
+  description: string;
+  dates: string;
+  details: ListItem[];
+  location?: string;
+  skills?: Array<string>;
+};
