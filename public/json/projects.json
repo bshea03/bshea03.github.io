@@ -1,6 +1,6 @@
 [
   {
-    "title": "bshea03.github.io",
+    "title": "bradyshea.dev",
     "description": "My personal portfolio website; built from scratch with Vue 3 and TailwindCSS 4.",
     "image": "/images/projects/thissite.png",
     "alt": "Screenshot of the homepage of this website",
@@ -27,7 +27,55 @@
       "conclusion": "As the sole developer, this site reflects my ability to quickly pick up new technologies, design intuitive interfaces, and build polished user experiences that showcase both technical skills and creative thinking."
     },
     "tech": ["Vue 3", "Typescript", "Vite", "TailwindCSS", "CSS", "Pinia"],
+    "docs": "/readme/thissite",
     "code": "https://github.com/bshea03/bshea03.github.io"
+  },
+  {
+    "title": "api.bradyshea.dev",
+    "description": "A lightweight API built to serve the data for this website.",
+    "image": "/images/projects/fastapi.png",
+    "alt": "FastAPI logo",
+    "docs": "/readme/portfolio-api",
+    "details": {
+      "intro": "<strong style='color: white'>This API</strong> is an extension of my personal website. It was built from scratch using FastAPI, PostgreSQL, and Docker, and serves as my first experience designing and deploying a backend system.",
+      "features": [
+        {
+          "title": "Versioned Routing",
+          "description": "Implements clean, modular routing under `/v1/` to support schema evolution while preserving backward compatibility."
+        },
+        {
+          "title": "Secure Access",
+          "description": "Protects create, update, and delete endpoints with API key authentication and rate limiting, through slowapi, to prevent abuse."
+        },
+        {
+          "title": "CORS & HTTPS Configuration",
+          "description": "Configured with HTTPS, reverse proxy (Nginx), and CORS headers to enable secure cross-origin communication with the frontend."
+        },
+        {
+          "title": "Versioned Database",
+          "description": "Uses Alembic to manage Postgres migrations, allowing for safe revisions, rollbacks, and maintainability."
+        },
+        {
+          "title": "CI/CD Pipeline",
+          "description": "Automated deployment pipeline powered by GitHub Actions, Docker, and Digital Ocean, ensuring fast builds and zero-downtime updates."
+        },
+        {
+          "title": "AI-Assisted Development",
+          "description": "Leveraged AI tooling for code optimization, security hardening, and streamlining other tedious tasks."
+        }
+      ],
+      "conclusion": "This project reflects my ability to build secure, maintainable backend systems from the ground up. It complements my frontend work by showcasing full-stack ownership—from database migrations to deployment automation—and highlights my ability to quickly adopt and apply new backend technologies."
+    },
+    "tech": [
+      "FastAPI",
+      "PostgreSQL",
+      "Docker",
+      "Alembic",
+      "Nginx",
+      "CI/CD",
+      "GitHub Actions"
+    ],
+    "code": "https://github.com/bshea03/portfolio-api"
   },
   {
     "title": "Celebi",

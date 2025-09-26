@@ -26,7 +26,7 @@ const head = createHead();
 app.use(head);
 
 const experience = useExperience();
-experience.loadAll().then(() => {
+experience.loadPortfolio().then(() => {
   app.mount("#app");
 });
 

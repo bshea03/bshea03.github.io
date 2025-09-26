@@ -58,11 +58,11 @@ pnpm run build
 
 ## 📸 Preview
 
-![Portfolio Screenshot](./assets/images/projects/thissite.png)
+![Portfolio Screenshot](/public/images/projects/thissite.png)
 
 ---
 
-## 📌 Roadmap / Future Improvements
+## 📌 Future Improvements
 
 - [ ] Admin dashboard for dynamically adding new projects, skills, etc.
 - [ ] Enable projects dropdown; include links to live projects
