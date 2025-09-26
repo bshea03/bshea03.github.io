@@ -38,8 +38,6 @@ export const useExperience = defineStore("experience", () => {
 
       const portfolio = await response.json();
 
-      console.log(portfolio);
-
       // Field-level fallback logic
       projects.value =
         Array.isArray(portfolio.projects) && portfolio.projects.length
