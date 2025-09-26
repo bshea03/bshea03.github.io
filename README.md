@@ -74,7 +74,7 @@ pnpm run build
 
 - **Portfolio**: [bradyshea.dev](https://bradyshea.dev)
 - **Email**: [Brady.Shea97@gmail.com](mailto:Brady.Shea97@gmail.com)
-- **LinkedIn**: [Profile - Brady Shea](https://www.linkedin.com/in/brady-shea-699911152/)
+- **LinkedIn**: [Profile - Brady Shea](https://www.linkedin.com/in/bradyshea97/)
 
 ---
 

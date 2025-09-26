@@ -73,7 +73,7 @@ const experienceSections = [
           <i class="devicon-github-plain text-xl"></i>
         </a>
         <a
-          href="https://www.linkedin.com/in/brady-shea-699911152/"
+          href="https://www.linkedin.com/in/bradyshea97/"
           name="LinkedIn"
           target="_blank"
           class="text-gray-400 transition hover:text-white"

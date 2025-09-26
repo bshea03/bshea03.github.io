@@ -346,7 +346,7 @@ onUnmounted(() => {
         />
         <GlowingIconButton
           icon="devicon-linkedin-plain"
-          href="https://www.linkedin.com/in/brady-shea-699911152/"
+          href="https://www.linkedin.com/in/bradyshea97/"
           external
         />
       </div>

@@ -59,7 +59,7 @@ import SectionDivider from "../SectionDivider.vue";
           class="rounded-full bg-gradient-to-r from-blue-500 via-cyan-500 to-purple-500 p-[1px] transition-all hover:scale-105"
         >
           <a
-            href="https://www.linkedin.com/in/brady-shea-699911152/"
+            href="https://www.linkedin.com/in/bradyshea97/"
             name="LinkedIn footer link"
             target="_blank"
             rel="noopener"
