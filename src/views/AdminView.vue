@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { useExperience } from "@/stores/experience";
-import SkillEditor from "@/components/admin/SkillEditor.vue";
-// import JobEditor from "@/components/admin/JobEditor.vue";
-// import ProjectEditor from "@/components/admin/ProjectEditor.vue";
-// import AwardEditor from "@/components/admin/AwardEditor.vue";
 
 const experience = useExperience();
 const experienceLoaded = ref(false);
@@ -14,7 +10,7 @@ onMounted(async () => {
   experienceLoaded.value = true;
 });
 
-const { skills, jobs, projects, awards } = experience;
+const { skills } = experience;
 </script>
 
 <template>
