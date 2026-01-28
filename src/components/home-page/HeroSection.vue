@@ -105,15 +105,24 @@ const particlesOptions = {
       >
         <!-- Headline -->
         <h1
-          class="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl"
+          class="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl mb-4"
         >
           Hi, I’m <span class="text-blue-400">Brady</span>
         </h1>
 
         <!-- Paragraph -->
-        <p class="text-base text-gray-200 sm:text-lg">
-          A full stack engineer inspired by music, motivated by learning, and
-          passionate about building things people want to use.
+        <p class="text-base text-gray-400 sm:text-md ml-1 mb-3">
+          <span class="pr-2">React</span> •
+          <span class="pr-2 pl-2">TypeScript</span> •
+          <span class="pr-2 pl-2">Python</span> •
+          <span class="pr-2 pl-2">PostgreSQL</span> •
+          <span class="pl-2">CI/CD</span>
+        </p>
+
+        <!-- Paragraph -->
+        <p class="text-md text-gray-200 sm:text-lg ml-1">
+          I'm a full-stack engineer with a love of programming and a deep
+          curiosity about all things technology.
         </p>
 
         <!-- Buttons -->

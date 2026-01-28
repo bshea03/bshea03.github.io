@@ -61,7 +61,7 @@ export const useExperience = defineStore("experience", () => {
     } catch (error) {
       console.warn(
         "Portfolio fetch failed, falling back to all local JSON:",
-        error
+        error,
       );
       projects.value = await fetchFallback<Project[]>("projects");
       jobs.value = await fetchFallback<Job[]>("jobs");

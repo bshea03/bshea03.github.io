@@ -2,32 +2,30 @@
 
 [![Website](https://img.shields.io/badge/Website-bradyshea.dev-blue?style=flat-square&logo=google-chrome)](https://bradyshea.dev)
 
-Welcome to the source code for my personal website and portfolio!  
-This site highlights my experience, projects, and skills as a software engineer, both in writing and in practice—since this entire site [(and API)](https://github.com/bshea03/portfolio-api) was built from scratch.
+Welcome to the source code for my personal website and portfolio!
+
+This site showcases my experience, projects, and skills as a software engineer. The intention was to both explain my experience, while also showing it in practice, since this entire site [(and API)](https://github.com/bshea03/portfolio-api) was built from scratch.
 
 You can view the live site here: **[bradyshea.dev](https://bradyshea.dev)**
 
 ---
 
-## 🚀 Features
+## Features
 
-- **Responsive design** – optimized for desktop and mobile.
-- **Interactive components** – smooth transitions and animations.
-- **Project showcase** – highlights my work with detailed write-ups.
-- **Contact section** – easy ways to reach out or connect.
+This site was built to feature a responsive design, allowing it to be viewed from desktop or mobile while maintaining the layout/styling. Along with this, I experimented heavily with new technology that I previously had little exposure to, such as Vue 3 and its available component libraries, CSS animation libraries, and PNPM. In the future, I plan to also add an admin page where I can dynamically add new skills, projects, etc. through the UI.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
-- **Frontend Framework**: Vue 3 with Vite
+- **Framework**: Vue 3 with Vite
 - **Styling**: Tailwind CSS + custom components
 - **Animations**: AOS (Animate On Scroll) and custom CSS
-- **Deployment**: GitHub Pages + DigitalOcean (API)
+- **Deployment**: GitHub Pages
 
 ---
 
-## 📦 Getting Started
+## Build & Run
 
 Clone the repo:
 
@@ -56,26 +54,26 @@ pnpm run build
 
 ---
 
-## 📸 Preview
+## Preview
 
-![Portfolio Screenshot](/public/images/projects/thissite.png)
-
----
-
-## 📌 Future Improvements
-
-- [ ] Admin dashboard for dynamically adding new projects, skills, etc.
-- [ ] Enable projects dropdown; include links to live projects
-- [ ] Dark mode toggle
+![Portfolio Screenshot](./assets/images/projects/thissite.png)
 
 ---
 
-## 📬 Contact
+## Roadmap / Future Improvements
+
+- Admin dashboard for dynamically adding new projects, skills, etc.
+- Enable projects dropdown; include links to live projects
+- Dark mode toggle
+
+---
+
+## Contact
 
 - **Portfolio**: [bradyshea.dev](https://bradyshea.dev)
 - **Email**: [Brady.Shea97@gmail.com](mailto:Brady.Shea97@gmail.com)
-- **LinkedIn**: [Profile - Brady Shea](https://www.linkedin.com/in/bradyshea97/)
+- **LinkedIn**: [Profile](https://www.linkedin.com/in/bradyshea97/)
 
 ---
 
-⭐️ If you like this portfolio or found inspiration from it, feel free to give this repo a star!
+If you like this portfolio or found inspiration from it, feel free to connect with me on LinkedIn! I am always open for a chat or potential new opportunities. :)
