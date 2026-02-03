@@ -1,28 +1,32 @@
 <script setup lang="ts">
-import { ref, type FunctionalComponent } from 'vue'
-import { RouterLink } from 'vue-router'
+import { ref, type FunctionalComponent } from "vue";
+import { RouterLink } from "vue-router";
 
 interface Item {
-  label: string
-  id?: string
-  path?: string
-  icon?: FunctionalComponent
+  label: string;
+  id?: string;
+  path?: string;
+  icon?: FunctionalComponent;
 }
 
 defineProps<{
-  label: string
-  icon: FunctionalComponent
-  to: string
-  items?: Item[]
-  disabled?: boolean
-  exact?: boolean
-}>()
+  label: string;
+  icon: FunctionalComponent;
+  to: string;
+  items?: Item[];
+  disabled?: boolean;
+  exact?: boolean;
+}>();
 
-const open = ref(false)
+const open = ref(false);
 </script>
 
 <template>
-  <div class="group relative" @mouseenter="!disabled && (open = true)" @mouseleave="open = false">
+  <div
+    class="group relative"
+    @mouseenter="!disabled && (open = true)"
+    @mouseleave="open = false"
+  >
     <RouterLink
       :to="to"
       class="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition"

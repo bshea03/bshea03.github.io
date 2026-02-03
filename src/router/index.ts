@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 const HomeView = () => import("@/views/HomeView.vue");
 const ExperienceView = () => import("@/views/ExperienceView.vue");
 const ReadmeView = () => import("@/views/ReadmeView.vue");
+const ChatAppView = () => import("@/views/ChatAppView.vue");
 // const AdminView = () => import("@/views/AdminView.vue");
 
 const SCROLL_OFFSET = 64; // same offset you used elsewhere
@@ -10,7 +11,7 @@ const SCROLL_OFFSET = 64; // same offset you used elsewhere
 function waitForElement(
   selector: string | null,
   timeout = 600,
-  pollInterval = 20
+  pollInterval = 20,
 ) {
   if (!selector) return Promise.resolve(document.documentElement);
   const id = selector.replace("#", "");
@@ -39,6 +40,11 @@ const router = createRouter({
     {
       path: "/readme/:version",
       component: ReadmeView,
+      meta: { transition: "fade" },
+    },
+    {
+      path: "/chat-app",
+      component: ChatAppView,
       meta: { transition: "fade" },
     },
     // {

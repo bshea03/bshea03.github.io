@@ -26,6 +26,8 @@ const experienceSections = [
   { label: "Portfolio", id: "portfolio", icon: PencilLine },
   { label: "Resume", id: "resume", icon: FileBadge },
 ];
+
+const projectsSections = [{ label: "Chat App", path: "chat-app", icon: Star }];
 </script>
 
 <template>
@@ -58,7 +60,7 @@ const experienceSections = [
           label="Projects"
           :icon="PencilRuler"
           to="/projects"
-          disabled
+          :items="projectsSections"
         />
       </div>
 
