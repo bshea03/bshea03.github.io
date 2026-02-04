@@ -31,7 +31,7 @@ onBeforeUnmount(() => {
     <transition name="fade" appear>
       <div
         v-show="open"
-        class="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/70 p-4 backdrop-blur-sm sm:items-center sm:overflow-hidden sm:p-6"
+        class="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto overscroll-contain bg-black/70 p-4 backdrop-blur-sm sm:items-center sm:overflow-hidden sm:p-6"
         @click.self="emit('close')"
       >
         <transition name="scale" appear>
@@ -39,7 +39,7 @@ onBeforeUnmount(() => {
           <div
             v-if="open"
             :key="projectKey"
-            class="relative max-h-screen w-full max-w-2xl overflow-y-auto rounded-2xl border border-gray-800 bg-gray-900/95 shadow-2xl sm:flex sm:max-h-[90vh] sm:flex-col sm:overflow-hidden"
+            class="relative max-h-screen w-full max-w-2xl overflow-y-auto overscroll-contain rounded-2xl border border-gray-800 bg-gray-900/95 shadow-2xl sm:flex sm:max-h-[90vh] sm:flex-col sm:overflow-hidden"
           >
             <!-- Close button -->
             <button

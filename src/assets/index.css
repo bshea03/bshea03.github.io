@@ -1,5 +1,5 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
+@import "tailwindcss";
+@import "tw-animate-css";
 @plugin 'tailwind-scrollbar';
 @plugin "@tailwindcss/typography";
 
@@ -126,6 +126,33 @@
   }
   body {
     @apply bg-background text-foreground;
+
+    scrollbar-color: rgba(255, 255, 255, 0.15) rgba(255, 255, 255, 0.05);
+    scrollbar-width: thin;
+
+    * {
+      scrollbar-color: rgba(255, 255, 255, 0.15) rgba(255, 255, 255, 0);
+      scrollbar-width: thin;
+    }
+
+    /* WebKit (Chrome, Safari, Edge) */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 9999px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
   }
   html,
   body,

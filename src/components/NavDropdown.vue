@@ -45,17 +45,23 @@ const open = ref(false);
     <transition name="fade-slide">
       <div
         v-if="!disabled && items && open"
-        class="absolute left-0 mt-2 w-52 rounded-xl border border-white/10 bg-gray-900/95 p-3 shadow-xl"
+        class="absolute left-0 top-full w-52"
       >
-        <RouterLink
-          v-for="item in items"
-          :key="item.id"
-          :to="{ path: item.path || to, hash: item.id ? '#' + item.id : '' }"
-          class="flex items-center gap-3 rounded-md px-2 py-2 text-sm text-gray-300 transition hover:bg-white/10 hover:text-white"
+        <!-- Invisible bridge to cover the gap -->
+        <div class="h-3 w-full"></div>
+        <div
+          class="rounded-xl border border-white/10 bg-gray-900/95 p-3 shadow-xl"
         >
-          <component v-if="item.icon" :is="item.icon" class="size-4" />
-          {{ item.label }}
-        </RouterLink>
+          <RouterLink
+            v-for="item in items"
+            :key="item.id"
+            :to="{ path: item.path || to, hash: item.id ? '#' + item.id : '' }"
+            class="flex items-center gap-3 rounded-md px-2 py-2 text-sm text-gray-300 transition hover:bg-white/10 hover:text-white"
+          >
+            <component v-if="item.icon" :is="item.icon" class="size-4" />
+            {{ item.label }}
+          </RouterLink>
+        </div>
       </div>
     </transition>
 
