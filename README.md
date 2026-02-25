@@ -1,79 +1,133 @@
-# Personal Portfolio – Brady Shea
+# Brady Shea Portfolio - Monorepo
 
-[![Website](https://img.shields.io/badge/Website-bradyshea.dev-blue?style=flat-square&logo=google-chrome)](https://bradyshea.dev)
+A monorepo containing Brady Shea's portfolio website with a Vue 3 client and Express server.
 
-Welcome to the source code for my personal website and portfolio!
+## Project Structure
 
-This site showcases my experience, projects, and skills as a software engineer. The intention was to both explain my experience, while also showing it in practice, since this entire site [(and API)](https://github.com/bshea03/portfolio-api) was built from scratch.
-
-You can view the live site here: **[bradyshea.dev](https://bradyshea.dev)**
-
----
-
-## Features
-
-This site was built to feature a responsive design, allowing it to be viewed from desktop or mobile while maintaining the layout/styling. Along with this, I experimented heavily with new technology that I previously had little exposure to, such as Vue 3 and its available component libraries, CSS animation libraries, and PNPM. In the future, I plan to also add an admin page where I can dynamically add new skills, projects, etc. through the UI.
-
----
-
-## Tech Stack
-
-- **Framework**: Vue 3 with Vite
-- **Styling**: Tailwind CSS + custom components
-- **Animations**: AOS (Animate On Scroll) and custom CSS
-- **Deployment**: GitHub Pages
-
----
-
-## Build & Run
-
-Clone the repo:
-
-```bash
-git clone https://github.com/bshea03/bshea03.github.io.git
-cd bshea03.github.io
+```
+.
+├── packages/
+│   ├── client/         # Vue 3 frontend application
+│   ├── server/         # Express REST API
+│   └── shared/         # Shared TypeScript types
+├── package.json        # Root workspace configuration
+└── pnpm-workspace.yaml # pnpm workspace config
 ```
 
-Install dependencies:
+## Getting Started
+
+### Prerequisites
+
+- Node.js (^20.19.0 || >=22.12.0)
+- pnpm
+
+### Installation
+
+Install all dependencies across all packages:
 
 ```bash
 pnpm install
 ```
 
-Run locally:
+### Development
+
+Start both client and server in development mode:
 
 ```bash
-pnpm run dev
+pnpm dev
 ```
 
-Build for production:
+Or run them individually:
 
 ```bash
-pnpm run build
+# Client only (runs on http://localhost:5173)
+pnpm dev:client
+
+# Server only (runs on http://localhost:8080)
+pnpm dev:server
 ```
 
----
+### Building
 
-## Preview
+Build all packages:
 
-![Portfolio Screenshot](./assets/images/projects/thissite.png)
+```bash
+pnpm build
+```
 
----
+Build individual packages:
 
-## Roadmap / Future Improvements
+```bash
+pnpm build:client
+pnpm build:server
+```
 
-- Admin dashboard for dynamically adding new projects, skills, etc.
-- Enable projects dropdown; include links to live projects
-- Dark mode toggle
+### Type Checking
 
----
+Run type checking across all packages:
 
-## Contact
+```bash
+pnpm type-check
+```
 
-- **Portfolio**: [bradyshea.dev](https://bradyshea.dev)
-- **Email**: [Brady.Shea97@gmail.com](mailto:Brady.Shea97@gmail.com)
-- **LinkedIn**: [Profile](https://www.linkedin.com/in/bradyshea97/)
+### Linting & Formatting
 
----
+```bash
+pnpm lint
+pnpm format
+```
 
-If you like this portfolio or found inspiration from it, feel free to connect with me on LinkedIn! I am always open for a chat or potential new opportunities. :)
+## Packages
+
+### Client (`packages/client`)
+
+Vue 3 portfolio website with:
+
+- Tailwind CSS for styling
+- Vue Router for navigation
+- Pinia for state management
+- TypeScript support
+
+### Server (`packages/server`)
+
+Express REST API providing:
+
+- Portfolio data endpoints (`/v1/portfolio`)
+- Individual resource endpoints (`/v1/jobs`, `/v1/projects`, etc.)
+- CORS enabled
+- TypeScript support
+
+### Shared (`packages/shared`)
+
+Shared TypeScript types used by both client and server:
+
+- `Job`, `Project`, `Award`, `Skill` types
+- Portfolio data structures
+
+## Environment Variables
+
+### Client
+
+Create `packages/client/.env.development`:
+
+```
+VITE_API_URL=http://localhost:8080/
+```
+
+For production, create `packages/client/.env.production`:
+
+```
+VITE_API_URL=https://your-production-api.com/
+```
+
+## External Services
+
+The portfolio uses an external Go-based WebSocket service for the chat feature. This service is separate from the monorepo.
+
+## Deployment
+
+The client is deployed to GitHub Pages, while the server can be deployed to any Node.js hosting platform.
+
+## License
+
+Private
