@@ -7,7 +7,7 @@
     "node": "^20.19.0 || >=22.12.0"
   },
   "scripts": {
-    "dev": "pnpm --parallel --filter './packages/*' dev",
+    "dev": "pnpm --parallel --filter './app/*' dev",
     "dev:client": "pnpm --filter client dev",
     "dev:server": "pnpm --filter server dev",
     "build": "pnpm --filter server build && pnpm --filter client build",
@@ -15,7 +15,7 @@
     "build:server": "pnpm --filter server build",
     "type-check": "pnpm --recursive type-check",
     "lint": "pnpm --recursive lint",
-    "format": "prettier --write 'packages/*/src/**/*.{ts,tsx,vue}'",
+    "format": "prettier --write 'app/*/src/**/*.{ts,tsx,vue}'",
     "test": "pnpm --recursive test",
     "clean": "pnpm --recursive exec rm -rf dist node_modules .turbo"
   },

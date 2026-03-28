@@ -1,9 +1,8 @@
-import express, { type RequestHandler } from "express";
+import express from "express";
 import cors from "cors";
 import bcrypt from "bcryptjs";
 import "dotenv/config";
 import jwt from "jsonwebtoken";
-import { expressjwt } from "express-jwt";
 import { closeDB, connectDB } from "./db/connection.js";
 import { portfolioRouter } from "./routes/portfolio.js";
 import { jobsRouter } from "./routes/jobs.js";
@@ -15,14 +14,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 const { ACCESS_TOKEN_SECRET, ADMIN_USERNAME, ADMIN_PASSWORD } = process.env;
-if (!ACCESS_TOKEN_SECRET) {
-  throw new Error("ACCESS_TOKEN_SECRET is not set");
-}
-
-export const authMiddleware: RequestHandler = expressjwt({
-  secret: ACCESS_TOKEN_SECRET,
-  algorithms: ["HS256"],
-});
+if (!ACCESS_TOKEN_SECRET) throw new Error("ACCESS_TOKEN_SECRET is not set");
 
 // middleware
 app.use(cors());
@@ -34,23 +26,19 @@ app.get("/health", (req, res) => {
 });
 
 app.post("/login", async (req, res) => {
-  const user = req.body.username;
-  // if user not in db, respond w a 400
-  //
+  const { username, password } = req.body;
   try {
-    if (
-      req.body.username !== ADMIN_USERNAME &&
-      (await bcrypt.compare(ADMIN_PASSWORD as string, user.password))
-    ) {
-      res.send(`Logged in as ${user.name}`);
-    } else {
-      res.send("Incorrect username or password");
+    const usernameMatch = username === ADMIN_USERNAME;
+    const passwordMatch = await bcrypt.compare(password, ADMIN_PASSWORD as string);
+    if (!usernameMatch || !passwordMatch) {
+      res.status(401).json({ error: "Incorrect username or password" });
+      return;
     }
+    const accessToken = jwt.sign({ username }, ACCESS_TOKEN_SECRET, { expiresIn: "24h" });
+    res.json({ accessToken });
   } catch (err) {
     res.sendStatus(500);
   }
-  const accessToken = jwt.sign(user, ACCESS_TOKEN_SECRET, { expiresIn: "24h" });
-  res.json({ accessToken });
 });
 
 // API routes

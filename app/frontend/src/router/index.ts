@@ -1,10 +1,12 @@
 // router.ts
 import { createRouter, createWebHistory } from "vue-router";
+import { useAuthStore } from "@/stores/auth";
 const HomeView = () => import("@/views/HomeView.vue");
 const ExperienceView = () => import("@/views/ExperienceView.vue");
 const ReadmeView = () => import("@/views/ReadmeView.vue");
 const ChatAppView = () => import("@/views/ChatAppView.vue");
 const AdminView = () => import("@/views/AdminView.vue");
+const LoginView = () => import("@/views/LoginView.vue");
 
 const SCROLL_OFFSET = 64; // same offset you used elsewhere
 
@@ -52,9 +54,14 @@ const router = createRouter({
       component: AdminView,
       meta: { transition: "fade" },
     },
+    {
+      path: "/login",
+      component: LoginView,
+      meta: { transition: "fade" },
+    },
   ],
 
-  async scrollBehavior(to, from, savedPosition) {
+  async scrollBehavior(to, _from, savedPosition) {
     if (savedPosition) return savedPosition;
 
     if (to.hash) {
@@ -72,6 +79,13 @@ const router = createRouter({
 
     return { left: 0, top: 0 };
   },
+});
+
+router.beforeEach((to) => {
+  const auth = useAuthStore();
+  auth.validateToken();
+  if (to.path === "/admin" && !auth.isAuthenticated) return "/login";
+  if (to.path === "/login" && auth.isAuthenticated) return "/admin";
 });
 
 export default router;

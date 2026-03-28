@@ -1,6 +1,7 @@
-import type { Award, Job, Project, SkillList } from "@types";
+import type { Award, Job, Project, Skill, SkillList } from "@types";
 import { defineStore } from "pinia";
 import { ref } from "vue";
+import { useAuthStore } from "./auth";
 
 const api = import.meta.env.VITE_API_URL || "http://localhost:8080/";
 const version = 1;
@@ -70,5 +71,26 @@ export const useExperience = defineStore("experience", () => {
     }
   }
 
-  return { jobs, projects, awards, skills, loadPortfolio };
+  async function updateSkills(updatedSkills: Skill[], category: string) {
+    const { token } = useAuthStore();
+    const categoryKey = category.toLowerCase() as Skill["category"];
+    const ordered = updatedSkills.map((skill, i) => ({ ...skill, category: categoryKey, rank: i + 1 }));
+
+    const res = await fetch(`${apiUrl}/skills/${categoryKey}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(ordered),
+    });
+
+    if (!res.ok) throw new Error("Failed to save skills");
+
+    if (skills.value) {
+      skills.value[categoryKey as keyof SkillList] = ordered;
+    }
+  }
+
+  return { jobs, projects, awards, skills, loadPortfolio, updateSkills };
 });
