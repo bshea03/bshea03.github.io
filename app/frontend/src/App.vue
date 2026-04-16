@@ -17,9 +17,9 @@ import MobileNavMenu from "./components/MobileNavMenu.vue";
       <MobileNavMenu />
     </div>
 
-    <div class="h-full">
+    <div class="min-h-full">
       <div
-        class="pointer-events-none absolute inset-0 bg-linear-to-br from-indigo-900/20 via-transparent to-purple-900/20"
+        class="pointer-events-none fixed inset-0 bg-linear-to-br from-indigo-900/20 via-transparent to-purple-900/20"
       ></div>
       <RouterView v-slot="{ Component }">
         <div :key="$route.path">

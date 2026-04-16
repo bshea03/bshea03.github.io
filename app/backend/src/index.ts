@@ -1,5 +1,4 @@
 import express from "express";
-import cors from "cors";
 import bcrypt from "bcryptjs";
 import "dotenv/config";
 import jwt from "jsonwebtoken";
@@ -9,15 +8,29 @@ import { jobsRouter } from "./routes/jobs.js";
 import { awardsRouter } from "./routes/awards.js";
 import { projectsRouter } from "./routes/projects.js";
 import { skillsRouter } from "./routes/skills.js";
+import corsConfig from "../cors.json" with { type: "json" };
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+const allowedOrigins = corsConfig.flatMap((rule) => rule.origin);
 
 const { ACCESS_TOKEN_SECRET, ADMIN_USERNAME, ADMIN_PASSWORD } = process.env;
 if (!ACCESS_TOKEN_SECRET) throw new Error("ACCESS_TOKEN_SECRET is not set");
 
 // middleware
-app.use(cors());
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (origin && allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  if (req.method === "OPTIONS") {
+    res.sendStatus(204);
+    return;
+  }
+  next();
+});
 app.use(express.json());
 
 // Health check

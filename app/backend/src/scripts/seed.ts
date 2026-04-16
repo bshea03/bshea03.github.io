@@ -4,7 +4,7 @@ import {
   SkillListModel,
   JobModel,
   ProjectModel,
-  AwardModel,
+  AwardListModel,
 } from "../db/models/index.js";
 import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
@@ -38,11 +38,16 @@ async function seedDatabase() {
       id: index + 1,
     }));
 
+    const awardsWithIds = awards.map((award, index) => ({
+      ...award,
+      id: index + 1,
+    }));
+
     // Clear existing collections
     await Promise.all([
       JobModel.deleteMany({}),
       ProjectModel.deleteMany({}),
-      AwardModel.deleteMany({}),
+      AwardListModel.deleteMany({}),
       SkillListModel.deleteMany({}),
     ]);
 
@@ -57,7 +62,7 @@ async function seedDatabase() {
     await Promise.all([
       JobModel.insertMany(jobsWithIds),
       ProjectModel.insertMany(projects),
-      AwardModel.insertMany(awards),
+      AwardListModel.create({ awards: awardsWithIds }),
       SkillListModel.insertMany(skillDocs),
     ]);
 
@@ -65,7 +70,6 @@ async function seedDatabase() {
     await Promise.all([
       JobModel.syncIndexes(),
       ProjectModel.syncIndexes(),
-      AwardModel.syncIndexes(),
       SkillListModel.syncIndexes(),
     ]);
 

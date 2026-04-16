@@ -36,3 +36,7 @@ coverage
 
 test-results/
 playwright-report/
+
+# GCP service account keys
+*service-account*.json
+*service-account-key*.json

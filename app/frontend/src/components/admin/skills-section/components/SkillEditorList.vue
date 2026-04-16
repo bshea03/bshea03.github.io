@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { ref, watch, nextTick } from "vue";
-import { PencilLine, Trash, Check, X, GripVertical } from "lucide-vue-next";
 import { toast } from "vue-sonner";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import type { Skill } from "@types";
 import CardContent from "@/components/ui/card/CardContent.vue";
 import Draggable from "vuedraggable";
-import IconPicker from "./IconPicker.vue";
 import { useExperience } from "@/stores/experience";
+import SkillEditorItem from "./SkillEditorItem.vue";
 
 const store = useExperience();
 
@@ -20,6 +19,7 @@ const localSkills = ref<Skill[]>([]);
 const saving = ref(false);
 const editingId = ref<string | null>(null);
 const editingName = ref("");
+const editingIcon = ref("");
 
 watch(
   () => skills,
@@ -43,7 +43,6 @@ const confirmSave = async () => {
   }
 };
 
-
 const handleAdd = async () => {
   const newSkill: Skill = {
     id: `skill-${Date.now()}`,
@@ -61,13 +60,19 @@ const handleAdd = async () => {
   input?.focus();
 };
 
+const handleDelete = (id: string) => {
+  localSkills.value = localSkills.value.filter((skill) => skill.id !== id);
+};
+
 const startEdit = (skill: Skill) => {
   editingId.value = skill.id;
   editingName.value = skill.name;
+  editingIcon.value = skill.icon;
 };
 
 const saveEdit = (skill: Skill) => {
   skill.name = editingName.value;
+  skill.icon = editingIcon.value;
   editingId.value = null;
 };
 
@@ -77,10 +82,6 @@ const cancelEdit = (skill: Skill) => {
   } else {
     editingId.value = null;
   }
-};
-
-const handleDelete = (id: string) => {
-  localSkills.value = localSkills.value.filter((skill) => skill.id !== id);
 };
 </script>
 
@@ -108,62 +109,16 @@ const handleDelete = (id: string) => {
           v-bind="{ animation: 200, ghostClass: 'dragging', disabled: editingId !== null }"
         >
           <template #item="{ element }">
-            <div
-              v-if="editingId !== element.id"
-              class="flex gap-3 items-center p-3 rounded-lg bg-gray-800 hover:bg-gray-750 transition-colors cursor-grab h-12 w-full"
-            >
-              <GripVertical class="drag-handle text-gray-600 size-4 cursor-grab shrink-0" />
-              <i :class="element.icon + ' text-blue-400'"></i>
-              <span class="flex-1">{{ element.name }}</span>
-              <button
-                @click="startEdit(element)"
-                class="flex items-center justify-center rounded-full size-5 bg-gray-700 hover:bg-gray-600 transition-colors"
-                title="Edit skill"
-                :key="`edit-${element.id}`"
-              >
-                <PencilLine class="text-gray-400 size-3" />
-              </button>
-              <button
-                @click="handleDelete(element.id)"
-                class="flex items-center justify-center rounded-full size-5 bg-gray-700 hover:bg-gray-600 transition-colors"
-                title="Delete skill"
-                :key="`delete-${element.id}`"
-              >
-                <Trash class="text-gray-400 size-3" />
-              </button>
-            </div>
-
-            <div
-              v-else
-              class="flex gap-3 items-center p-3 rounded-lg bg-blue-900 h-12 w-full"
-            >
-              <GripVertical class="drag-handle text-gray-600 size-4 shrink-0" />
-              <IconPicker v-model="element.icon" />
-              <input
-                :data-skill-id="element.id"
-                v-model="editingName"
-                @keyup.enter="saveEdit(element)"
-                @keyup.escape="cancelEdit(element)"
-                class="flex-1 bg-gray-800 text-white px-2 py-1 rounded border border-blue-500 h-6 w-full"
-                type="text"
-              />
-              <button
-                @click="saveEdit(element)"
-                class="flex items-center justify-center rounded-full size-5 bg-green-600 hover:bg-green-700 transition-colors"
-                title="Save"
-                :key="`create-${element.id}`"
-              >
-                <Check class="text-white size-3" />
-              </button>
-              <button
-                @click="cancelEdit(element)"
-                class="flex items-center justify-center rounded-full size-5 bg-red-600 hover:bg-red-700 transition-colors"
-                title="Cancel"
-                :key="`cancel-${element.id}`"
-              >
-                <X class="text-white size-3" />
-              </button>
-            </div>
+            <SkillEditorItem
+              :skill="element"
+              :is-editing="editingId === element.id"
+              v-model:editing-name="editingName"
+              v-model:editing-icon="editingIcon"
+              @start-edit="startEdit(element)"
+              @save-edit="saveEdit(element)"
+              @cancel-edit="cancelEdit(element)"
+              @delete="handleDelete(element.id)"
+            />
           </template>
         </Draggable>
       </div>
