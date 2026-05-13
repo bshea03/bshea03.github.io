@@ -48,7 +48,8 @@ const handleAdd = async () => {
     id: `skill-${Date.now()}`,
     name: "New Skill",
     icon: "",
-    rank: localSkills.value.length + 1,
+    order: localSkills.value.length,
+    category: category as Skill["category"],
   };
   localSkills.value.push(newSkill);
   editingId.value = newSkill.id;

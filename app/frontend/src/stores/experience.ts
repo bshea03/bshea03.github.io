@@ -24,68 +24,24 @@ export const useExperience = defineStore("experience", () => {
   const awards = ref<Award[]>([]);
   const skills = ref<SkillList>();
 
-  /**
-   * Fetch fallback JSON for a specific field
-   */
-  async function fetchFallback<T>(path: string): Promise<T> {
-    const response = await fetch(`/json/${path}.json`);
-    return await response.json();
-  }
-
-  /**
-   * Load portfolio and fallback for missing/empty fields
-   */
   async function loadPortfolio() {
-    if (
-      jobs.value.length &&
-      projects.value.length &&
-      awards.value.length &&
-      skills.value
-    )
+    if (jobs.value.length && projects.value.length && awards.value.length && skills.value)
       return;
 
-    try {
-      const response = await fetch(`${apiUrl}/portfolio`);
-      if (!response.ok) throw new Error(`API error: ${response.status}`);
+    const response = await fetch(`${apiUrl}/portfolio`);
+    if (!response.ok) throw new Error(`API error: ${response.status}`);
 
-      const portfolio = await response.json();
-
-      // Field-level fallback logic
-      projects.value =
-        Array.isArray(portfolio.projects) && portfolio.projects.length
-          ? portfolio.projects
-          : await fetchFallback<Project[]>("projects");
-
-      jobs.value =
-        Array.isArray(portfolio.jobs) && portfolio.jobs.length
-          ? portfolio.jobs
-          : await fetchFallback<Job[]>("jobs");
-
-      awards.value =
-        Array.isArray(portfolio.awards) && portfolio.awards.length
-          ? portfolio.awards
-          : await fetchFallback<Award[]>("awards");
-
-      skills.value =
-        portfolio.skills && Object.keys(portfolio.skills).length
-          ? portfolio.skills
-          : await fetchFallback<SkillList>("skills");
-    } catch (error) {
-      console.warn(
-        "Portfolio fetch failed, falling back to all local JSON:",
-        error,
-      );
-      projects.value = await fetchFallback<Project[]>("projects");
-      jobs.value = await fetchFallback<Job[]>("jobs");
-      awards.value = await fetchFallback<Award[]>("awards");
-      skills.value = await fetchFallback<SkillList>("skills");
-    }
+    const portfolio = await response.json();
+    jobs.value = portfolio.jobs;
+    projects.value = portfolio.projects;
+    awards.value = portfolio.awards;
+    skills.value = portfolio.skills;
   }
 
   async function updateSkills(updatedSkills: Skill[], category: string) {
     const { token } = useAuthStore();
     const categoryKey = category.toLowerCase() as Skill["category"];
-    const ordered = updatedSkills.map((skill, i) => ({ ...skill, category: categoryKey, rank: i + 1 }));
+    const ordered = updatedSkills.map((skill, i) => ({ ...skill, category: categoryKey, order: i + 1 }));
 
     const res = await fetch(`${apiUrl}/skills/${categoryKey}`, {
       method: "PUT",
@@ -205,5 +161,52 @@ export const useExperience = defineStore("experience", () => {
     awards.value = orderedAwards;
   }
 
-  return { jobs, projects, awards, skills, loadPortfolio, updateSkills, updateJob, createJob, deleteJob, createAward, updateAward, deleteAward, reorderAwards };
+  async function createProject(data: Omit<Project, "id">) {
+    const { token } = useAuthStore();
+    const res = await fetch(`${apiUrl}/projects`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+      body: JSON.stringify(data),
+    });
+    if (!res.ok) throw new Error("Failed to create project");
+    const created: Project = await res.json();
+    projects.value = [...projects.value, created];
+    return created;
+  }
+
+  async function updateProject(id: number, data: Project) {
+    const { token } = useAuthStore();
+    const res = await fetch(`${apiUrl}/projects/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+      body: JSON.stringify(data),
+    });
+    if (!res.ok) throw new Error("Failed to update project");
+    const saved: Project = await res.json();
+    const index = projects.value.findIndex((p) => p.id === id);
+    if (index !== -1) projects.value[index] = saved;
+  }
+
+  async function deleteProject(id: number) {
+    const { token } = useAuthStore();
+    const res = await fetch(`${apiUrl}/projects/${id}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    if (!res.ok) throw new Error("Failed to delete project");
+    projects.value = projects.value.filter((p) => p.id !== id);
+  }
+
+  async function reorderProjects(ordered: Project[]) {
+    const { token } = useAuthStore();
+    const res = await fetch(`${apiUrl}/projects/reorder`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+      body: JSON.stringify({ ids: ordered.map((p) => p.id) }),
+    });
+    if (!res.ok) throw new Error("Failed to reorder projects");
+    projects.value = ordered;
+  }
+
+  return { jobs, projects, awards, skills, loadPortfolio, updateSkills, updateJob, createJob, deleteJob, createAward, updateAward, deleteAward, reorderAwards, createProject, updateProject, deleteProject, reorderProjects };
 });

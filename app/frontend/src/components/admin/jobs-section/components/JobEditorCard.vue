@@ -5,12 +5,11 @@ import { toast } from "vue-sonner";
 import type { Job, ListItem } from "@types";
 import { useExperience } from "@/stores/experience";
 import { useAuthStore } from "@/stores/auth";
+import { useGcsUpload, apiUrl } from "@/composables/useGcsUpload";
 
 const store = useExperience();
 const auth = useAuthStore();
-
-const api = import.meta.env.VITE_API_URL || "http://localhost:8080/";
-const apiUrl = `${api}v1`;
+const { uploadToGcs } = useGcsUpload();
 
 const iconUploading = ref(false);
 
@@ -18,25 +17,9 @@ const handleIconUpload = async (e: Event) => {
   if (isNew) return;
   const file = (e.target as HTMLInputElement).files?.[0];
   if (!file) return;
-
   iconUploading.value = true;
   try {
-    // Get a short-lived signed URL from the backend
-    const urlRes = await fetch(
-      `${apiUrl}/jobs/${local.value.id}/icon-upload-url?contentType=${encodeURIComponent(file.type)}`,
-      { headers: { Authorization: `Bearer ${auth.token}` } },
-    );
-    if (!urlRes.ok) throw new Error("Failed to get upload URL");
-    const { signedUrl, publicUrl } = await urlRes.json();
-
-    // PUT the file directly to GCS — no file data passes through our backend
-    const uploadRes = await fetch(signedUrl, {
-      method: "PUT",
-      headers: { "Content-Type": file.type },
-      body: file,
-    });
-    if (!uploadRes.ok) throw new Error("Upload failed");
-
+    const publicUrl = await uploadToGcs(`jobs/${local.value.id}/icon-upload-url`, file);
     const saveRes = await fetch(`${apiUrl}/jobs/${local.value.id}/icon`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${auth.token}` },
@@ -135,7 +118,7 @@ const save = async () => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-5 p-4">
+  <div class="flex flex-col gap-3 px-5 pt-4 pb-5">
 
     <!-- Basic fields -->
     <div class="grid grid-cols-2 gap-3">

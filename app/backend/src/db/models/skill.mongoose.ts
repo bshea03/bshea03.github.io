@@ -5,19 +5,13 @@ const CATEGORIES = ["frontend", "backend", "cloud", "tools", "testing"];
 
 const skillSchema = new Schema<Skill>(
   {
-    id: { type: String, required: true },
+    id: { type: String, required: true, unique: true },
     name: { type: String, required: true },
     icon: { type: String, default: "" },
-  },
-  { _id: false },
-);
-
-const skillListSchema = new Schema(
-  {
-    category: { type: String, enum: CATEGORIES, required: true, unique: true },
-    skills: [skillSchema],
+    category: { type: String, enum: CATEGORIES, required: true },
+    order: { type: Number, required: true, default: 0 },
   },
   { timestamps: true },
 );
 
-export const SkillListModel = model("SkillList", skillListSchema, "skill_lists");
+export const SkillModel = model<Skill>("Skill", skillSchema, "skills");

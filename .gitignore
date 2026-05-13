@@ -33,10 +33,17 @@ coverage
 .env
 .env.local
 .env.*.local
+app/frontend/.env.development
+app/frontend/.env.production
 
 test-results/
 playwright-report/
 
+docker-compose.override.yml
+
 # GCP service account keys
 *service-account*.json
 *service-account-key*.json
+
+# Empty placeholder
+app/backend/.npmignore

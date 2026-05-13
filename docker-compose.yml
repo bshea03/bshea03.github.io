@@ -1,0 +1,63 @@
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - internal
+
+  backend:
+    build:
+      context: .
+      dockerfile: app/backend/Dockerfile
+    restart: unless-stopped
+    environment:
+      MONGODB_URI: mongodb://mongo:27017/portfolio
+      NODE_ENV: production
+    volumes:
+      - ./app/backend/service-account-key.json:/app/service-account-key.json:ro
+    depends_on:
+      - mongo
+    networks:
+      - internal
+
+  seed:
+    build:
+      context: .
+      dockerfile: app/backend/Dockerfile
+    command: node dist/backend/src/scripts/seed.js
+    environment:
+      MONGODB_URI: mongodb://mongo:27017/portfolio
+      NODE_ENV: production
+    volumes:
+      - ./app/backend/service-account-key.json:/app/service-account-key.json:ro
+    depends_on:
+      - mongo
+    networks:
+      - internal
+    profiles:
+      - seed
+
+  frontend:
+    build:
+      context: .
+      dockerfile: app/frontend/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - certbot_webroot:/var/www/certbot
+    depends_on:
+      - backend
+    networks:
+      - internal
+
+networks:
+  internal:
+
+volumes:
+  mongo_data:
+  certbot_webroot:

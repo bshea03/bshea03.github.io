@@ -61,6 +61,7 @@ const projectsSections = [{ label: "Chat App", path: "chat-app", icon: Star }];
           :icon="PencilRuler"
           to="/projects"
           :items="projectsSections"
+          disabled
         />
       </div>
 

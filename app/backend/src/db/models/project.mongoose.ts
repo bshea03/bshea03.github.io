@@ -11,6 +11,8 @@ const featureSchema = new Schema(
 
 const projectSchema = new Schema<Project>(
   {
+    id: { type: Number, required: true, unique: true },
+    order: { type: Number, required: true, default: 0 },
     title: { type: String, required: true },
     description: { type: String, required: true },
     details: {
@@ -27,10 +29,4 @@ const projectSchema = new Schema<Project>(
   { timestamps: true },
 );
 
-projectSchema.index({ title: 1 }, { unique: true });
-
-export const ProjectModel = model<Project>(
-  "Project",
-  projectSchema,
-  "projects",
-);
+export const ProjectModel = model<Project>("Project", projectSchema, "projects");

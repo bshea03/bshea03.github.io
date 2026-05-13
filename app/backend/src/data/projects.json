@@ -2,7 +2,7 @@
   {
     "title": "bradyshea.dev",
     "description": "My personal portfolio website; built from scratch with Vue 3 and TailwindCSS 4.",
-    "image": "/images/projects/thissite.png",
+    "image": "https://storage.googleapis.com/portfolio-blob/projects/headers/1.png",
     "alt": "Screenshot of the homepage of this website",
     "details": {
       "intro": "<strong style='color: white'>This website</strong> is my most recent project. It was built from scratch using Vue 3, Vite, and TailwindCSS, and serves as my first exposure to each of these technologies.",
@@ -33,7 +33,7 @@
   {
     "title": "api.bradyshea.dev",
     "description": "A lightweight API built to serve the data for this website.",
-    "image": "/images/projects/fastapi.png",
+    "image": "https://storage.googleapis.com/portfolio-blob/projects/headers/2.png",
     "alt": "FastAPI logo",
     "docs": "/readme/portfolio-api",
     "details": {
@@ -80,7 +80,7 @@
   {
     "title": "Celebi",
     "description": "A server-side application written for a 200,000+ member Discord server.",
-    "image": "/images/projects/celebi.png",
+    "image": "https://storage.googleapis.com/portfolio-blob/projects/headers/3.png",
     "alt": "Image of the Pokemon Celebi that this project is named after.",
     "tech": ["Python", "Discord.py", "Psycopg2", "PostgreSQL", "AWS EC2"],
     "docs": "/readme/celebi",
@@ -141,7 +141,7 @@
       ],
       "conclusion": "Gary was my first project built independently for end users. It has run reliably on AWS EC2 for 7 years, provided a sandbox for experimenting with new technologies, and continues to deliver useful features to its community — reflecting both my passion for learning and my ability to build working software."
     },
-    "image": "/images/projects/gary.png",
+    "image": "https://storage.googleapis.com/portfolio-blob/projects/headers/4.png",
     "tech": [
       "Python",
       "Discord.py",
@@ -156,7 +156,7 @@
   {
     "title": "TuftScavenger",
     "description": "A mobile-first web app designed to acquaint students with the Tufts University campus.",
-    "image": "/images/projects/tufts.png",
+    "image": "https://storage.googleapis.com/portfolio-blob/projects/headers/5.jpg",
     "alt": "Image of the Tufts University campus.",
     "tech": ["Javascript", "HTML", "CSS", "Node.js", "Express", "Heroku"],
     "docs": "/readme/tuftscavenger",
@@ -187,7 +187,7 @@
   {
     "title": "The Universal Machine",
     "description": "A simple computer emulator that can read and execute basic assembly language commands.",
-    "image": "/images/projects/um.png",
+    "image": "https://storage.googleapis.com/portfolio-blob/projects/headers/6.png",
     "alt": "Clipart image of a computer.",
     "tech": ["C", "Assembly"],
     "docs": "/readme/um",

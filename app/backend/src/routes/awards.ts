@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getAllAwards, getAwardById, createAward, updateAward, deleteAward, reorderAwards } from "src/models/award.model";
+import { getAllAwards, getAwardById, createAward, updateAward, deleteAward, reorderAwards } from "../models/award.model.js";
 import type { Award } from "@types";
 import { authMiddleware } from "../middleware/auth.js";
 

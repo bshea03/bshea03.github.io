@@ -47,10 +47,10 @@ const blankJob = (): Job => ({
 <template>
   <div class="flex flex-col gap-3 mb-8">
     <!-- Existing jobs -->
-    <Card v-for="job in jobs" :key="job.id" class="overflow-hidden">
+    <Card v-for="job in jobs" :key="job.id" class="overflow-hidden hover:bg-white/5 transition-colors cursor-pointer">
       <!-- Row header -->
       <button
-        class="w-full flex items-center justify-between gap-4 px-5 py-4 text-left hover:bg-white/5 transition-colors"
+        class="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
         @click="toggle(job.id)"
       >
         <div class="flex items-center gap-4 min-w-0">
@@ -94,7 +94,7 @@ const blankJob = (): Job => ({
     </Card>
 
     <!-- Add new job -->
-    <Card v-if="expandedId === 'new'" class="overflow-hidden">
+    <Card v-if="expandedId === 'new'" class="overflow-hidden pt-0 pb-5">
       <div class="px-5 py-4 border-b border-white/10">
         <p class="font-semibold">New Job</p>
       </div>

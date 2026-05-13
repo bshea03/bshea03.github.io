@@ -1,14 +1,14 @@
 export type Project = {
+  id: number;
+  order: number;
   title: string;
   description: string;
   details: {
     intro: string;
-    features: [
-      {
-        title: string;
-        description: string;
-      },
-    ];
+    features: {
+      title: string;
+      description: string;
+    }[];
     conclusion: string;
   };
   image: string;

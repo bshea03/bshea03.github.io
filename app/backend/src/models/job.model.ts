@@ -36,6 +36,6 @@ export async function createJob(data: Partial<Job>): Promise<Job> {
   const last = await JobModel.findOne().sort({ id: -1 }).select("id").lean<{ id: number }>();
   const nextId = (last?.id ?? 0) + 1;
   const created = await JobModel.create({ ...data, id: nextId });
-  const { _id, __v, createdAt, updatedAt, ...job } = created.toObject();
+  const { _id, __v, createdAt, updatedAt, ...job } = created.toObject() as any;
   return job as Job;
 }

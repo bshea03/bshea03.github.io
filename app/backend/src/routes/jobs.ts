@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getAllJobs, getJobById, updateJob, createJob, deleteJob } from "src/models/job.model";
+import { getAllJobs, getJobById, updateJob, createJob, deleteJob } from "../models/job.model.js";
 import { getSignedUploadUrl } from "../lib/storage.js";
 import type { Job } from "@types";
 import { authMiddleware } from "../middleware/auth.js";
@@ -75,7 +75,7 @@ router.get("/jobs/:id/icon-upload-url", authMiddleware, async (req, res) => {
     const { id } = req.params;
     const contentType = (req.query.contentType as string) || "image/png";
     const ext = contentType.split("/")[1] ?? "png";
-    const { signedUrl, publicUrl } = await getSignedUploadUrl(`job-${id}.${ext}`, contentType);
+    const { signedUrl, publicUrl } = await getSignedUploadUrl(`jobs/${id}.${ext}`, contentType);
     res.json({ signedUrl, publicUrl });
   } catch (error) {
     console.error("Error generating upload URL:", error);

@@ -2,12 +2,14 @@ import express from "express";
 import bcrypt from "bcryptjs";
 import "dotenv/config";
 import jwt from "jsonwebtoken";
+import { rateLimit } from "express-rate-limit";
 import { closeDB, connectDB } from "./db/connection.js";
 import { portfolioRouter } from "./routes/portfolio.js";
 import { jobsRouter } from "./routes/jobs.js";
 import { awardsRouter } from "./routes/awards.js";
 import { projectsRouter } from "./routes/projects.js";
 import { skillsRouter } from "./routes/skills.js";
+import { resumeRouter } from "./routes/resume.js";
 import corsConfig from "../cors.json" with { type: "json" };
 
 const app = express();
@@ -38,7 +40,13 @@ app.get("/health", (req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
-app.post("/login", async (req, res) => {
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 10,
+  message: { error: "Too many login attempts. Please try again later." },
+});
+
+app.post("/login", loginLimiter, async (req, res) => {
   const { username, password } = req.body;
   try {
     const usernameMatch = username === ADMIN_USERNAME;
@@ -60,6 +68,7 @@ app.use("/v1", jobsRouter);
 app.use("/v1", awardsRouter);
 app.use("/v1", projectsRouter);
 app.use("/v1", skillsRouter);
+app.use("/v1", resumeRouter);
 
 // 404 handler
 app.use((req, res) => {

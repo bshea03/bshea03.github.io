@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import { ChevronDown, ChevronUp, Plus, Trash, GripVertical, Award as AwardIcon, Medal } from "lucide-vue-next";
+import {
+  ChevronDown,
+  ChevronUp,
+  Plus,
+  Trash,
+  GripVertical,
+  Award as AwardIcon,
+  Medal,
+} from "lucide-vue-next";
 import { toast } from "vue-sonner";
 import { Card } from "@/components/ui/card";
 import type { Award } from "@types";
@@ -15,10 +23,11 @@ const expandedId = ref<number | "new" | null>(null);
 const deletingId = ref<number | null>(null);
 const localAwards = computed({
   get: () => awards,
-  set: (val) => store.reorderAwards(val).catch((err) => toast.error(err.message)),
+  set: (val) =>
+    store.reorderAwards(val).catch((err) => toast.error(err.message)),
 });
 
-const iconComponent = (icon: string) => icon === "Medal" ? Medal : AwardIcon;
+const iconComponent = (icon: string) => (icon === "Medal" ? Medal : AwardIcon);
 
 const handleDelete = async (award: Award, e: MouseEvent) => {
   e.stopPropagation();
@@ -41,6 +50,7 @@ const toggle = (id: number) => {
 
 const blankAward = (): Award => ({
   id: 0,
+  order: 0,
   title: "",
   description: "",
   icon: "Award",
@@ -59,9 +69,9 @@ const blankAward = (): Award => ({
       class="flex flex-col gap-3"
     >
       <template #item="{ element: award }">
-        <Card class="overflow-hidden">
+        <Card class="overflow-hidden hover:bg-white/5 transition-colors cursor-pointer">
           <button
-            class="w-full flex items-center justify-between gap-4 px-5 py-4 text-left hover:bg-white/5 transition-colors"
+            class="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
             @click="toggle(award.id)"
           >
             <div class="flex items-center gap-4 min-w-0">
@@ -69,7 +79,9 @@ const blankAward = (): Award => ({
                 class="drag-handle text-gray-600 size-5 cursor-grab shrink-0"
                 @click.stop
               />
-              <div class="bg-primary/10 text-primary flex size-8 items-center justify-center rounded-lg shrink-0">
+              <div
+                class="bg-primary/10 text-primary flex size-8 items-center justify-center rounded-lg shrink-0"
+              >
                 <component :is="iconComponent(award.icon)" class="size-4" />
               </div>
               <div class="min-w-0">
@@ -86,7 +98,10 @@ const blankAward = (): Award => ({
               >
                 <Trash class="size-3" />
               </button>
-              <ChevronUp v-if="expandedId === award.id" class="size-4 text-gray-400" />
+              <ChevronUp
+                v-if="expandedId === award.id"
+                class="size-4 text-gray-400"
+              />
               <ChevronDown v-else class="size-4 text-gray-400" />
             </div>
           </button>
@@ -103,15 +118,17 @@ const blankAward = (): Award => ({
     </Draggable>
 
     <Card v-if="expandedId === 'new'" class="overflow-hidden">
-      <div class="px-5 py-4 border-b border-white/10">
+      <div class="px-5 pb-0">
         <p class="font-semibold">New Award</p>
       </div>
-      <AwardEditorCard
-        :award="blankAward()"
-        :is-new="true"
-        @saved="expandedId = null"
-        @cancel="expandedId = null"
-      />
+      <div class="border-t border-white/10">
+        <AwardEditorCard
+          :award="blankAward()"
+          :is-new="true"
+          @saved="expandedId = null"
+          @cancel="expandedId = null"
+        />
+      </div>
     </Card>
 
     <button

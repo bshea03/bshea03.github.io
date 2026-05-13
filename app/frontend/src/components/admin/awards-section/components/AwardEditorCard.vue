@@ -7,13 +7,22 @@ import { useExperience } from "@/stores/experience";
 
 const store = useExperience();
 
-const { award, isNew = false } = defineProps<{ award: Award; isNew?: boolean }>();
+const { award, isNew = false } = defineProps<{
+  award: Award;
+  isNew?: boolean;
+}>();
 const emit = defineEmits<{ saved: []; cancel: [] }>();
 
 const local = ref<Award>({ ...award });
 const saving = ref(false);
 
-watch(() => award, (a) => { local.value = { ...a }; }, { immediate: true });
+watch(
+  () => award,
+  (a) => {
+    local.value = { ...a };
+  },
+  { immediate: true },
+);
 
 const save = async () => {
   saving.value = true;
@@ -35,7 +44,7 @@ const save = async () => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-4 p-4">
+  <div class="flex flex-col gap-3 px-5 pt-4">
     <div class="grid grid-cols-2 gap-3">
       <div class="flex flex-col gap-1">
         <label class="text-xs text-gray-400">Title</label>
@@ -43,13 +52,22 @@ const save = async () => {
       </div>
       <div class="flex flex-col gap-1">
         <label class="text-xs text-gray-400">Date</label>
-        <input v-model="local.date" type="text" class="input" placeholder="e.g. May 2024" />
+        <input
+          v-model="local.date"
+          type="text"
+          class="input"
+          placeholder="e.g. May 2024"
+        />
       </div>
     </div>
 
     <div class="flex flex-col gap-1">
       <label class="text-xs text-gray-400">Description</label>
-      <textarea v-model="local.description" rows="3" class="input resize-none" />
+      <textarea
+        v-model="local.description"
+        rows="3"
+        class="input resize-none"
+      />
     </div>
 
     <div class="flex flex-col gap-1">
@@ -59,7 +77,11 @@ const save = async () => {
           type="button"
           @click="local.icon = 'Award'"
           class="flex items-center gap-2 px-4 py-2 rounded-lg border transition-colors"
-          :class="local.icon === 'Award' ? 'border-blue-500 bg-blue-500/10 text-blue-400' : 'border-gray-600 bg-gray-800 text-gray-400 hover:border-gray-500'"
+          :class="
+            local.icon === 'Award'
+              ? 'border-blue-500 bg-blue-500/10 text-blue-400'
+              : 'border-gray-600 bg-gray-800 text-gray-400 hover:border-gray-500'
+          "
         >
           <AwardIcon class="size-4" />
           <span class="text-sm">Award</span>
@@ -68,7 +90,11 @@ const save = async () => {
           type="button"
           @click="local.icon = 'Medal'"
           class="flex items-center gap-2 px-4 py-2 rounded-lg border transition-colors"
-          :class="local.icon === 'Medal' ? 'border-blue-500 bg-blue-500/10 text-blue-400' : 'border-gray-600 bg-gray-800 text-gray-400 hover:border-gray-500'"
+          :class="
+            local.icon === 'Medal'
+              ? 'border-blue-500 bg-blue-500/10 text-blue-400'
+              : 'border-gray-600 bg-gray-800 text-gray-400 hover:border-gray-500'
+          "
         >
           <Medal class="size-4" />
           <span class="text-sm">Medal</span>

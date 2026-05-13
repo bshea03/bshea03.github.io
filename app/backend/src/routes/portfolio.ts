@@ -1,9 +1,9 @@
 import { Router } from "express";
 import type { Portfolio } from "@types";
-import { getAllJobs } from "src/models/job.model";
-import { getAllProjects } from "src/models/project.model";
-import { getAllAwards } from "src/models/award.model";
-import { getSkillsList } from "src/models/skill.model";
+import { getAllJobs } from "../models/job.model.js";
+import { getAllProjects } from "../models/project.model.js";
+import { getAllAwards } from "../models/award.model.js";
+import { getSkillsList } from "../models/skill.model.js";
 
 const router = Router();
 

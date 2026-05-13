@@ -2,6 +2,8 @@
 import { FileUser } from "lucide-vue-next";
 import SectionDivider from "../SectionDivider.vue";
 import SectionHeader from "../SectionHeader.vue";
+
+const resumeUrl = import.meta.env.VITE_RESUME_URL as string;
 </script>
 
 <template>
@@ -48,7 +50,7 @@ import SectionHeader from "../SectionHeader.vue";
         >
           <iframe
             alt="Preview of Brady Shea’s resume highlighting full-stack and cloud experience"
-            src="brady_shea_resume.pdf"
+            :src="resumeUrl"
             class="h-150 w-full"
             title="Resume PDF"
           ></iframe>
@@ -59,7 +61,7 @@ import SectionHeader from "../SectionHeader.vue";
       <div class="mt-10 flex justify-center">
         <a
           name="Download resume"
-          href="brady_shea_resume.pdf"
+          :href="resumeUrl"
           download
           class="rounded-full bg-linear-to-r from-blue-500 to-purple-500 px-6 py-3 text-lg font-semibold text-white shadow-lg transition-transform duration-200 hover:scale-105 hover:shadow-xl"
         >

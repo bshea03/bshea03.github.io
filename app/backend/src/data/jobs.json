@@ -1,7 +1,7 @@
 [
   {
     "company": "Dispatch Technologies",
-    "icon": "./images/jobs/dispatch.png",
+    "icon": "https://storage.googleapis.com/portfolio-blob/jobs/4.png",
     "description": "Senior Software Engineer • Software Engineer",
     "dates": "December 2021 - August 2025 (Full-time)",
     "details": [
@@ -48,7 +48,7 @@
   },
   {
     "company": "Raytheon Technologies",
-    "icon": "./images/jobs/raytheon.png",
+    "icon": "https://storage.googleapis.com/portfolio-blob/jobs/3.png",
     "description": "Software Engineer I",
     "dates": "July 2019 - December 2021 (Full-time)",
     "details": [
@@ -89,7 +89,7 @@
   },
   {
     "company": "Sikorsky Aircraft",
-    "icon": "./images/jobs/sikorsky.png",
+    "icon": "https://storage.googleapis.com/portfolio-blob/jobs/2.png",
     "description": "Information Technology Intern",
     "dates": "May 2018 - August 2018 (Internship)",
     "details": [
@@ -118,7 +118,7 @@
   },
   {
     "company": "Neo Era Media",
-    "icon": "./images/jobs/neo.png",
+    "icon": "https://storage.googleapis.com/portfolio-blob/jobs/1.png",
     "description": "Section Manager, Wiki Administrator, Beta Tester",
     "dates": "July 2012 - August 2018 (Part-time, volunteer role)",
     "details": [

@@ -1,10 +1,10 @@
 import "dotenv/config";
 import { connectDB, closeDB } from "../db/connection.js";
 import {
-  SkillListModel,
+  SkillModel,
   JobModel,
   ProjectModel,
-  AwardListModel,
+  AwardModel,
 } from "../db/models/index.js";
 import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
@@ -41,42 +41,48 @@ async function seedDatabase() {
     const awardsWithIds = awards.map((award, index) => ({
       ...award,
       id: index + 1,
+      order: index,
     }));
+
+    const projectsWithIds = projects.map((project, index) => ({
+      ...project,
+      id: index + 1,
+      order: index,
+    }));
+
+    const categories = Object.keys(skillList) as (keyof SkillList)[];
+    const skillDocs = categories.flatMap((category) =>
+      skillList[category].map((skill, order) => ({ ...skill, category, order })),
+    );
 
     // Clear existing collections
     await Promise.all([
       JobModel.deleteMany({}),
       ProjectModel.deleteMany({}),
-      AwardListModel.deleteMany({}),
-      SkillListModel.deleteMany({}),
+      AwardModel.deleteMany({}),
+      SkillModel.deleteMany({}),
     ]);
-
-    // Insert skills as one document per category
-    const categories = Object.keys(skillList) as (keyof SkillList)[];
-    const skillDocs = categories.map((category) => ({
-      category,
-      skills: skillList[category],
-    }));
 
     // Insert data
     await Promise.all([
       JobModel.insertMany(jobsWithIds),
-      ProjectModel.insertMany(projects),
-      AwardListModel.create({ awards: awardsWithIds }),
-      SkillListModel.insertMany(skillDocs),
+      ProjectModel.insertMany(projectsWithIds),
+      AwardModel.insertMany(awardsWithIds),
+      SkillModel.insertMany(skillDocs),
     ]);
 
     // Sync indexes
     await Promise.all([
       JobModel.syncIndexes(),
       ProjectModel.syncIndexes(),
-      SkillListModel.syncIndexes(),
+      AwardModel.syncIndexes(),
+      SkillModel.syncIndexes(),
     ]);
 
     const totalSkills = categories.reduce((sum, cat) => sum + skillList[cat].length, 0);
     console.log("Jobs:", jobsWithIds.length);
-    console.log("Projects:", projects.length);
-    console.log("Awards:", awards.length);
+    console.log("Projects:", projectsWithIds.length);
+    console.log("Awards:", awardsWithIds.length);
     console.log("Skills:", totalSkills, `(${categories.length} categories)`);
     console.log("\nDatabase seeded successfully");
   } catch (error) {
