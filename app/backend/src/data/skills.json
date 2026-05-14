@@ -1,0 +1,44 @@
+{
+  "frontend": [
+    { "id": "1", "icon": "devicon-react-original", "name": "React" },
+    { "id": "2", "icon": "devicon-vuejs-plain", "name": "Vue.js" },
+    { "id": "3", "icon": "devicon-nuxt-plain", "name": "Nuxt" },
+    { "id": "4", "icon": "devicon-redux-original", "name": "Redux" },
+    { "id": "5", "icon": "devicon-react-original", "name": "React Native" },
+    { "id": "6", "icon": "devicon-typescript-plain", "name": "TypeScript" },
+    { "id": "7", "icon": "devicon-tailwindcss-plain", "name": "TailwindCSS" },
+    { "id": "8", "icon": "devicon-css3-plain", "name": "CSS" },
+    { "id": "9", "icon": "devicon-html5-plain", "name": "HTML" },
+    { "id": "10", "icon": "devicon-javascript-plain", "name": "JavaScript" }
+  ],
+  "backend": [
+    { "id": "11", "icon": "devicon-nodejs-plain", "name": "Node.js" },
+    { "id": "12", "icon": "devicon-rails-plain", "name": "Ruby on Rails" },
+    { "id": "13", "icon": "devicon-express-original", "name": "Express" },
+    { "id": "14", "icon": "devicon-python-plain", "name": "Python" },
+    { "id": "15", "icon": "devicon-java-plain", "name": "Java" },
+    { "id": "16", "icon": "devicon-go-original-wordmark", "name": "Go" },
+    { "id": "17", "icon": "devicon-postgresql-plain", "name": "PostgreSQL" },
+    { "id": "18", "icon": "devicon-sqlite-plain", "name": "SQLite" }
+  ],
+  "testing": [
+    { "id": "19", "icon": "devicon-jest-plain", "name": "Jest" },
+    { "id": "20", "icon": "devicon-cypressio-plain", "name": "Cypress" },
+    { "id": "21", "icon": "devicon-playwright-plain", "name": "Playwright" },
+    { "id": "22", "icon": "devicon-pytest-plain", "name": "Pytest" }
+  ],
+  "cloud": [
+    { "id": "23", "icon": "devicon-github-original", "name": "GitHub Actions" },
+    { "id": "24", "icon": "devicon-amazonwebservices-plain-wordmark", "name": "AWS" },
+    { "id": "25", "icon": "devicon-docker-plain", "name": "Docker" },
+    { "id": "26", "icon": "devicon-travis-plain", "name": "Travis CI" }
+  ],
+  "tools": [
+    { "id": "27", "icon": "devicon-git-plain", "name": "Git" },
+    { "id": "28", "icon": "devicon-linux-plain", "name": "Linux" },
+    { "id": "29", "icon": "devicon-bash-plain", "name": "Bash" },
+    { "id": "30", "icon": "devicon-confluence-plain", "name": "Confluence" },
+    { "id": "31", "icon": "devicon-jira-plain", "name": "Jira" },
+    { "id": "32", "icon": "devicon-bitbucket-original", "name": "Bitbucket" }
+  ]
+}

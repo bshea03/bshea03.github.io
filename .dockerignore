@@ -1,0 +1,9 @@
+node_modules
+app/backend/node_modules
+app/frontend/node_modules
+app/backend/dist
+app/frontend/dist
+app/frontend/.env.local
+app/frontend/.env.*.local
+*.log
+dist
