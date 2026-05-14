@@ -7,42 +7,32 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  type-check:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-      - name: Setup Node
-        uses: actions/setup-node@v5
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
         with:
-          node-version-file: ".nvmrc"
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4.1.0
+          version: 11
+      - uses: actions/setup-node@v4
         with:
-          version: latest
-      - name: Install dependencies
-        run: pnpm i
-      - name: Run tests
-        run: |
-          pnpm lint
-          pnpm test:unit
-      - name: Build app
-        run: pnpm build
-      - name: Upload static files as artifact
-        id: deployment
-        uses: actions/upload-pages-artifact@v3 # or specific "vX.X.X" version tag for this action
-        with:
-          path: dist/
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: pnpm type-check
+
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
+    needs: type-check
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Deploy to DigitalOcean
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.DO_HOST }}
+          username: ${{ secrets.DO_USER }}
+          key: ${{ secrets.DO_SSH_KEY }}
+          script: |
+            cd ${{ secrets.DO_APP_DIR }}
+            git pull origin main
+            docker compose up --build -d --remove-orphans
+            docker image prune -f
