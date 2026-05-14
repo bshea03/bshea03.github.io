@@ -15,7 +15,7 @@ COPY app/frontend/ ./app/frontend/
 ENV VITE_API_URL=/
 ENV VITE_RESUME_URL=https://storage.googleapis.com/portfolio-blob/resumes/brady-shea-resume.pdf
 
-RUN pnpm --filter frontend build
+RUN pnpm --filter frontend build-only
 
 # Production stage
 FROM nginx:alpine
