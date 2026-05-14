@@ -1,7 +1,7 @@
 packages:
   - 'app/*'
 allowBuilds:
-  '@parcel/watcher': set this to true or false
-  '@tsparticles/engine': set this to true or false
-  esbuild: set this to true or false
-  vue-demi: set this to true or false
+  '@parcel/watcher': false
+  '@tsparticles/engine': false
+  esbuild: false
+  vue-demi: false

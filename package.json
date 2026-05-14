@@ -29,6 +29,6 @@
     "zod": "^4.3.6"
   },
   "pnpm": {
-    "ignoredBuiltDependencies": ["@parcel/watcher", "@tsparticles/engine", "esbuild", "vue-demi"]
+    "onlyBuiltDependencies": []
   }
 }
