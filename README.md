@@ -1,6 +1,6 @@
-# Brady Shea Portfolio - Monorepo
+# Portfolio - Monorepo
 
-A monorepo containing Brady Shea's portfolio website with a Vue 3 client and Express server.
+A monorepo containing my portfolio website with a Vue 3 frontend and Express/Mongo backend.
 
 ## Project Structure
 
