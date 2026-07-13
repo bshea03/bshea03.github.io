@@ -6,80 +6,46 @@ A monorepo containing Brady Shea's portfolio website with a Vue 3 client and Exp
 
 ```
 .
-├── packages/
-│   ├── client/         # Vue 3 frontend application
-│   ├── server/         # Express REST API
+├── app/
+│   ├── frontend/         # Vue 3 frontend application
+│   ├── backend/         # Express REST API
 │   └── shared/         # Shared TypeScript types
 ├── package.json        # Root workspace configuration
 └── pnpm-workspace.yaml # pnpm workspace config
 ```
 
-## Getting Started
+## Features
 
-### Prerequisites
+### Admin Page
 
-- Node.js (^20.19.0 || >=22.12.0)
-- pnpm
+The admin page allows for dynamic data manipulation and reordering. From here, I can create, update, or delete:
 
-### Installation
+#### Skills
+<img width="2558" height="928" alt="image" src="https://github.com/user-attachments/assets/002c4f27-b145-40b9-be55-cc4e3a090ff7" />
+<img width="400" height="650" alt="brave_RNBmzXrL8Z" src="https://github.com/user-attachments/assets/7171defd-7108-462c-9fb6-c0913c1d4fec" />
 
-Install all dependencies across all packages:
+#### Jobs
+<img width="2515" height="689" alt="brave_ftF5v9toC9" src="https://github.com/user-attachments/assets/b3a28481-fc90-419f-8bd6-0de4233172a1" />
 
-```bash
-pnpm install
-```
+- Includes image upload to Google Cloud blob storage
 
-### Development
+#### Awards
+<img width="2547" height="707" alt="brave_OLuCI0KPCz" src="https://github.com/user-attachments/assets/3d4dcfda-b72d-49a4-96fd-b2dc5b372809" />
 
-Start both client and server in development mode:
+#### Projects
+<img width="2545" height="966" alt="image" src="https://github.com/user-attachments/assets/4ea7c076-4285-47d5-83cc-3d701e53c95a" />
+<img width="2513" height="902" alt="image" src="https://github.com/user-attachments/assets/eb31ca9c-5d86-422f-855f-dd9a7eadebea" />
 
-```bash
-pnpm dev
-```
+- Includes image and README upload to Google Cloud blob storage; READMEs will then be rendered into the HTML like [this](https://bradyshea.dev/readme/celebi).
 
-Or run them individually:
+#### Resume
+<img width="524" height="188" alt="image" src="https://github.com/user-attachments/assets/33271bb7-fe52-4dd3-b982-cfbf8cb5abdd" />
 
-```bash
-# Client only (runs on http://localhost:5173)
-pnpm dev:client
-
-# Server only (runs on http://localhost:8080)
-pnpm dev:server
-```
-
-### Building
-
-Build all packages:
-
-```bash
-pnpm build
-```
-
-Build individual packages:
-
-```bash
-pnpm build:client
-pnpm build:server
-```
-
-### Type Checking
-
-Run type checking across all packages:
-
-```bash
-pnpm type-check
-```
-
-### Linting & Formatting
-
-```bash
-pnpm lint
-pnpm format
-```
+- Upload and replace the resume currently displayed from Google Cloud.
 
 ## Packages
 
-### Client (`packages/client`)
+### Frontend (`app/frontend`)
 
 Vue 3 portfolio website with:
 
@@ -88,7 +54,7 @@ Vue 3 portfolio website with:
 - Pinia for state management
 - TypeScript support
 
-### Server (`packages/server`)
+### Backend (`app/backend`)
 
 Express REST API providing:
 
@@ -97,7 +63,7 @@ Express REST API providing:
 - CORS enabled
 - TypeScript support
 
-### Shared (`packages/shared`)
+### Shared (`app/shared`)
 
 Shared TypeScript types used by both client and server:
 
@@ -122,11 +88,11 @@ VITE_API_URL=https://your-production-api.com/
 
 ## External Services
 
-The portfolio uses an external Go-based WebSocket service for the chat feature. This service is separate from the monorepo.
+The portfolio uses an external Go-based WebSocket service for the (in-progress) chat feature. This service is separate from the monorepo.
 
 ## Deployment
 
-The client is deployed to GitHub Pages, while the server can be deployed to any Node.js hosting platform.
+Both the frontend and backend are now being deployed to a DigitalOcean droplet via GitHub Actions.
 
 ## License
 
